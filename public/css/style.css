@@ -1,8 +1,15 @@
-/* TESTERS vvv */
+:root {
+
+    /* VARIABLES */
+    --thread-post-width: 150px;
+    --thread-post-height: 300px;
+}
+
 body {
     font-family: arial,helvetica,sans-serif;
     padding: 3px;
     background-color: #e3e7f8;
+
 }
 
 .wrapper-main {
@@ -47,7 +54,14 @@ body {
     padding: 0;
 }
 .options a {
-
+    text-decoration: none;
+    font-size: 90%
+}
+.options a:visited {
+    color: blue;
+}
+.options a:hover {
+    color: red;
 }
 
 .catalog {
@@ -58,9 +72,26 @@ body {
 }
 
 .thread-post {
-    width: 150px;
+
+    width: var(--thread-post-width);
     margin: 10px;
     text-align: center;
+
+    max-height: var(--thread-post-height);
+
+    overflow: hidden;
+}
+/* thumbnail vvv */
+.thread-post img {
+    box-shadow: 0 0 5px rgba(0,0,0,.25);
+    max-width: var(--thread-post-width);
+    /* max-height: calc(var(--thread-post-height) / 1.5); */
+}
+/* vvv the text displayed in a clickable thread icon on catalog */
+.teaser {
+    font-size: 10pt;
+    /* max-height: var(--thread-post-height); */
+    word-wrap: break-word;
 }
 
 /* DESKTOP style, screens > 800 pixels ;) */
@@ -70,6 +101,6 @@ body {
     }
 
     .form-group textarea {
-        width: 300px;
+        width: 500px;
     }
 }

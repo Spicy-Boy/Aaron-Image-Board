@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body>
+    <div class="wrapper-main">
+        <%- include("./partials/top-nav") %>
+
+        <div class="banner">
+            <img src="../public/images/kirby-eat.gif">
+            <h2>WELCOME TO AARON'S MAGIC IMAGEBOARD!</h2>
+
+        </div>
+        <hr>
+
+        <!-- container for the CREATE NEW THREAD form -->
+        <div class="new-thread">
+
+            <form action="/api/threads/createThread" method="post">
+
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Subject</label>
+                    <input type="text" id="title" name="title">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="content">Comment</label>
+                    <textarea id="content" name="content" rows="4" cols="50">
+                    </textarea>
+                </div>
+                
+                <br>
+
+                <input type="submit" value="Post Thread">
+            </form>
+        </div>
+        <hr>
+
+        <%- include("./partials/options-nav") %>
+
+        <div class="catalog">
+        </div>
+
+    </div>
+</body>
+
+<%- include("./partials/footer") %>
+
+
