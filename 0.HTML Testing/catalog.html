@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Image Board</title>
+
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    
+    <div class="wrapper-main">
+
+        <div class="options">
+
+            <ul>
+                <li>
+                    [<a href="/">Home</a>]
+                </li>
+            </ul>
+
+
+        </div>
+        <br>
+
+        <div class="banner">
+            <img src="../public/images/kirby-eat.gif">
+            <h2>WELCOME TO AARON'S MAGIC IMAGEBOARD!</h2>
+
+        </div>
+        <hr>
+        <div class="new-thread">
+
+            <form action="/api/threads/createThread" method="post">
+
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Subject</label>
+                    <input type="text" id="title" name="title">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="content">Comment</label>
+                    <textarea id="content" name="content" rows="4" cols="50">
+                    </textarea>
+                </div>
+                
+                <br>
+
+                <input type="submit" value="Post Thread">
+            </form>
+
+
+        </div>
+        <hr>
+        <div class="options">
+
+            <ul>
+                <li>
+                    [<a href="/">Home</a>]
+                </li>
+            </ul>
+
+
+        </div>
+        <hr>
+        <div class="catalog">
+
+            <!-- AN INDIVIDUAL LINK TO A THREAD vvv -->
+            <div class="thread-post">
+                HI HI!!!
+            </div>
+            <div class="thread-post">
+                <a href="LINK TO THREAD">
+                    <img src="LINK TO FIRST POST IMAGE">
+                </a>
+                <div class="teaser">
+
+                </div>
+                Imageboards, similar to bulletin board systems, are used for discussions of a variety of topics. The primary focus of imageboards, however, is directed away from text posts, and is instead placed on picture posts. The two share many of the same structures, including separate forums for separate topics, as well as similar audiences. Imageboards are much more transitory with content—on some boards (especially highly trafficked ones), the thread deletion time can be as little as 10 minutes. In Japan, where imageboards are more common,[citation needed] topics will vary widely, ranging from trains to current news. The most popular English language imageboard, 4chan, similarly has a large variety of topics. 
+            </div>
+            <div class="thread-post">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* TESTERS vvv */
+body {
+    font-family: arial,helvetica,sans-serif;
+    padding: 3px;
+    background-color: #e3e7f8;
+}
+
+.wrapper-main {
+    margin: 0 auto;
+}
+
+
+.banner {
+    text-align: center;
+}
+.banner img {
+    max-width: 100%;
+}
+.banner h2 {
+    font-size: 75%;
+}
+
+/* vvv ensures that all labels are aligned and same width */
+.form-group label {
+    display: inline-block;
+    width: 75px; /* Adjust the width as needed */
+    text-align: left;
+    margin-right: 10px;
+}
+.form-group textarea {
+    width: 200px;
+}
+
+/* navigation buttons like top, bottom, sort */
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.options li {
+    margin: 0;
+    padding: 0;
+}
+.options a {
+
+}
+
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.thread-post {
+    width: 150px;
+    margin: 10px;
+    text-align: center;
+}
+
+/* DESKTOP style, screens > 800 pixels ;) */
+@media (min-width: 800px) {
+    .banner h2 {
+        font-size: 1.5em;
+    }
+
+    .form-group textarea {
+        width: 300px;
+    }
+}
