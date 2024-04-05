@@ -19,6 +19,12 @@ const viewRouter = require("./routes/viewRouter");
 app.use("/", viewRouter);
 
 const threadRouter = require("./routes/threadRouter");
+app.use("/api/threads", threadRouter);
+
+//TODO: posts
+//vv post creation not ENABLED yet!
+// const postRouter = require("./routes/postRouter");
+// app.use("api/posts", postRouter);
 
 //Turn on the app
 const PORT = 8080;
