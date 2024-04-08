@@ -6,6 +6,7 @@ async function renderCatalogPage(req, res)
     try{
         //gets all threads
         let results = await Thread.find({});
+        
         res.render("catalog", {threads: results});
 
     } catch (error) {

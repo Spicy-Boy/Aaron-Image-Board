@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <label for="img">Img URL</label>
-                    <input type="text" id="img-url-bar" name="img" placeholder="https://imgur.com/QFw4xCI" value="https://imgur.com/QFw4xCI">
+                    <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
                 </div>
 
                 <br>
@@ -55,6 +55,19 @@
         <%- include("./partials/options-nav") %>
 
         <div class="catalog">
+
+            <%threads.forEach( (thread) => {%>
+                <div class="thread-post">
+                    <a href="/LINK TO THREAD PAGE INDIVIDUAL">
+                        <img src="<%=thread.posts[0].img%>">
+                    </a>
+                    <div class="teaser">
+                        <b><%=thread.title%></b>
+                        <%=thread.posts[0].textContent%>
+                    </div>
+                </div>
+            <%});%>
+
         </div>
 
     </div>

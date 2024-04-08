@@ -73,7 +73,8 @@ body {
     flex-direction: row;
     justify-content: center;
 }
-
+/* thread-posts are the container for the teaser, 
+they link to a thread from catalog vvv */
 .thread-post {
 
     width: var(--thread-post-width);
@@ -90,11 +91,55 @@ body {
     max-width: var(--thread-post-width);
     /* max-height: calc(var(--thread-post-height) / 1.5); */
 }
-/* vvv the text displayed in a clickable thread icon on catalog */
+/* vvv the text displayed in an individual thread-post in catalog */
 .teaser {
     font-size: 10pt;
     /* max-height: var(--thread-post-height); */
     word-wrap: break-word;
+}
+/*  0)_(0  **licks you** */
+/* POSTS in THREADS! */
+.thread {
+    display: flex;
+    flex-direction: column;
+}
+.post-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.reply-arrows {
+    color: #9a9da8;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.img-and-text-wrapper {
+
+}
+
+/* vvv posts that aren't the OP (first post) */
+.post-reply {
+    background-color: #d6daf0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px;
+}
+
+
+.post-img-header {
+    padding-bottom: 2px;
+    padding-top: 2px;
+    font-size: 10pt;
+}
+.post-thumbnail {
+    max-width: 125px;
+    max-height: 125px;
+    float: left;
+    margin-right: 10px;
+}
+.post-message {
+    font-size: 10pt;
 }
 
 /* DESKTOP style, screens > 800 pixels ;) */
