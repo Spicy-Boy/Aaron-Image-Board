@@ -1,5 +1,8 @@
 const Thread = require("../models/threadModel");
-const Post = require("../models/postModel");
+//deprecated vvv
+// const Post = require("../models/postModel");
+const PostNo = require("../models/postNoModel");
+const ThreadNo = require("../models/threadNoModel");
 
 async function getAllThreads(req, res)
 {
@@ -22,35 +25,38 @@ async function getAllThreads(req, res)
     }
 }
 
+//create a thread and a first comment, attach comment to thread
 async function createOneThread(req, res)
 {
     try{
 
-        const postData = {
+        //TESTER vvv
+        console.log(PostNo.find({}));
+
+        let postNo = await PostNo.find({});
+        let threadNo = await ThreadNo.find({});
+
+        const firstPostData = {
             username: req.body.username,
             textContent: req.body.content,
-            // vvv TEMP IMG SRC
-            img: "../public/images/larry.jpg",
-            // vvv TEMP needs to be figured out
-            thread: null,
-            replyingTo: null,
+            //img is temporarily a url, no uploading images from pc
+            img: req.body.img,
+            postNo: 13
         }
-
-        const newPost = await Post.create(postData);
 
         const threadData = {
             title: req.body.title,
             author: req.body.username,
             // add the post's objectid as the first post in the thread's array vv
-            posts: [newPost._id]
+            posts: [firstPostData],
+            threadNo: threadNo.number
         }
-
+        
         const newThread = await Thread.create(threadData);
 
-        //add the thread's object id to the post
-        newPost.thread = newThread._id;
+        postNo.number++;
 
-        await newThread.save();
+        await postNo.save();
 
         console.log('Thread created successfully!');
 

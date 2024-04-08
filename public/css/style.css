@@ -37,6 +37,9 @@ body {
 .form-group textarea {
     width: 200px;
 }
+#img-url-bar {
+    width: 200px;
+}
 
 /* navigation buttons like top, bottom, sort */
 .options {

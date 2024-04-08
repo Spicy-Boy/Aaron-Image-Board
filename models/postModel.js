@@ -1,3 +1,25 @@
+// DEPRECATED FOR NOW!
+
+//AARON DOES NOT USE THE POST MODEL AT THIS TIME,
+/* comments are instead saved to threads as an array of objects! */
+/*
+comment array vvv
+    posts: [{
+        username: String,
+        textContent: { //string of message
+            type: String,
+            required: true
+        },
+        img: String, // a URL to an image
+        postNo: Number, //post number assinged to this comment
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
+    }]
+*/
+
+
 const mongoose = require("mongoose");
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
