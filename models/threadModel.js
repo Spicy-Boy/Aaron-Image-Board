@@ -25,6 +25,10 @@ const threadSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    lastCommentAt: {
+        type: Date,
+        // default: Date.now()
     }
 });
 
