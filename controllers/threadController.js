@@ -30,18 +30,19 @@ async function createOneThread(req, res)
 {
     try{
 
+        let postNo = await PostNo.findOne({});
         //TESTER vvv
-        console.log(PostNo.find({}));
-
-        let postNo = await PostNo.find({});
-        let threadNo = await ThreadNo.find({});
+        postNo.number++;
+        console.log('postNo', postNo.number);
+        await postNo.save();
+        // let threadNo = await ThreadNo.findOne({});
 
         const firstPostData = {
             username: req.body.username,
             textContent: req.body.content,
             //img is temporarily a url, no uploading images from pc
             img: req.body.img,
-            postNo: 13
+            postNo: postNo.number
         }
 
         const threadData = {
@@ -49,14 +50,13 @@ async function createOneThread(req, res)
             author: req.body.username,
             // add the post's objectid as the first post in the thread's array vv
             posts: [firstPostData],
-            threadNo: threadNo.number
+            // threadNo: threadNo.number
         }
         
         const newThread = await Thread.create(threadData);
 
-        postNo.number++;
-
-        await postNo.save();
+        // postNo.number++;
+        // await postNo.save();
 
         console.log('Thread created successfully!');
 
