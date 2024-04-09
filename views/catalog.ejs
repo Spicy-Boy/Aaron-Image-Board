@@ -58,7 +58,7 @@
 
             <%threads.forEach( (thread) => {%>
                 <div class="thread-post">
-                    <a href="/LINK TO THREAD PAGE INDIVIDUAL">
+                    <a href="/<%=thread.threadNo%>">
                         <img src="<%=thread.posts[0].img%>">
                     </a>
                     <div class="teaser">
@@ -71,8 +71,7 @@
         </div>
 
     </div>
+
+    <%- include("./partials/footer") %>
+
 </body>
-
-<%- include("./partials/footer") %>
-
-

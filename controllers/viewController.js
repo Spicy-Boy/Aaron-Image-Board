@@ -1,4 +1,4 @@
-const Post = require("../models/postModel");
+// const Post = require("../models/postModel");
 const Thread = require("../models/threadModel");
 
 async function renderCatalogPage(req, res)
@@ -21,9 +21,23 @@ async function renderCatalogPage(req, res)
 
 async function renderSingleThreadPage(req, res)
 {
-    
+    try{
+        //gets all threads
+        let result = await Thread.findOne({threadNo: req.params.threadNo});
+        
+        res.render("singleThread", {thread: result});
+
+    } catch (error) {
+        let errorObj = {
+            message: "renderSingleThreadPage failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
 }
 
 module.exports = {
-    renderCatalogPage
+    renderCatalogPage,
+    renderSingleThreadPage
 };

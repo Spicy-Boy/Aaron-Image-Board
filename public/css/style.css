@@ -2,7 +2,7 @@
 
     /* VARIABLES */
     --thread-post-width: 150px;
-    --thread-post-height: 300px;
+    --thread-post-height: 250px;
 }
 
 body {
@@ -90,6 +90,7 @@ they link to a thread from catalog vvv */
 .thread-post img {
     box-shadow: 0 0 5px rgba(0,0,0,.25);
     max-width: var(--thread-post-width);
+    max-height: 150px;
     /* max-height: calc(var(--thread-post-height) / 1.5); */
 }
 /* vvv the text displayed in an individual thread-post in catalog */

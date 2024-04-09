@@ -56,27 +56,35 @@
 
         <div class="thread">
 
-            <%thread.posts.forEach( (post) => { %>
-                
-            <%});%>
-            <div class="post-container">
-                <div class="reply-arrows">>></div>
-                <div class="img-and-text-wrapper post-reply">
+            <%thread.posts.forEach( (post) => { %>    
+                <div class="post-container">
+                    <div class="reply-arrows">>></div>
+                    <div class="img-and-text-wrapper post-reply">
 
-                    <div class="post-user-information">
-                        <span class="username">Anonymous</span>
-                        <span class="date">04/08/24(Mon)</span>
+                        <div class="post-user-information">
+                            <span class="username"><%=post.username%></span>
+                            <!-- <span class="date">04/08/24(Mon)</span> -->
+                            <span class="date"> <%=post.createdAt%></span>
+                            <span class="postNo"> No.<%=post.postNo%></span>
+                        </div>
+
+                        <div class="post-img-header">
+                            File: <span><a href="<%=post.img%>" target="_blank">
+                                <%
+                                    // vv regex to remove most of url from link
+                                    let fileName = post.img.replace(/.*\//, '');
+                                %>
+                                <%=fileName%>
+                            </a></span><span> (??? KB, WidthxHeight)    
+                        </div>
+
+                        <img src="<%=post.img%>" class="post-thumbnail">
+                        <blockquote class="post-message"><%=post.textContent%></blockquote>
+
                     </div>
-
-                    <div class="post-img-header">
-                        File: <span><a href="https://i.imgur.com/QFw4xCI.jpeg" target="_blank">QFw4xCI.jpeg</a></span><span> (xxx KB, 1080x1208)    
-                    </div>
-
-                    <img src="https://i.imgur.com/QFw4xCI.jpeg" class="post-thumbnail">
-                    <blockquote class="post-message">Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!Testing... HI!!!</blockquote>
-
                 </div>
-            </div>
+
+            <%});%>
 
         </div>
 
