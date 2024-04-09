@@ -17,18 +17,11 @@
         <!-- container for the CREATE NEW THREAD form -->
         <div class="new-thread">
 
-            <form action="/api/threads/createPostInThread" method="post">
+            <form action="/api/threads/createPostInThread/<%=thread.threadNo%>" method="post">
 
                 <div class="form-group">
                     <label for="username">Name</label>
                     <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="title">Subject</label>
-                    <input type="text" id="title" name="title">
                 </div>
 
                 <br>
@@ -68,17 +61,19 @@
                             <span class="postNo"> No.<%=post.postNo%></span>
                         </div>
 
-                        <div class="post-img-header">
-                            File: <span><a href="<%=post.img%>" target="_blank">
-                                <%
-                                    // vv regex to remove most of url from link
-                                    let fileName = post.img.replace(/.*\//, '');
-                                %>
-                                <%=fileName%>
-                            </a></span><span> (??? KB, WidthxHeight)    
-                        </div>
+                        <% if (post.img) {%>
+                            <div class="post-img-header">
+                                File: <span><a href="<%=post.img%>" target="_blank">
+                                    <%
+                                        // vv regex to remove most of url from link
+                                        let fileName = post.img.replace(/.*\//, '');
+                                    %>
+                                    <%=fileName%>
+                                </a></span><span> (??? KB, WidthxHeight)    
+                            </div>
 
-                        <img src="<%=post.img%>" class="post-thumbnail">
+                            <img src="<%=post.img%>" class="post-thumbnail">
+                        <%}%>
                         <blockquote class="post-message"><%=post.textContent%></blockquote>
 
                     </div>
