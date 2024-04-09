@@ -55,6 +55,7 @@ body {
 .options li {
     margin: 0;
     padding: 0;
+    display: inline;
 }
 .options a {
     text-decoration: none;
@@ -112,6 +113,7 @@ they link to a thread from catalog vvv */
     color: #9a9da8;
     margin-right: 2px;
     margin-left: 2px;
+    padding-top: 6px;
 }
 
 .img-and-text-wrapper {
@@ -126,11 +128,17 @@ they link to a thread from catalog vvv */
     padding: 5px;
 }
 
-
 .post-img-header {
     padding-bottom: 2px;
     padding-top: 2px;
     font-size: 10pt;
+}
+.post-user-information {
+    padding-bottom: 2px;
+    font-size: 10pt;
+}
+.username {
+    color: #2c845a;
 }
 .post-thumbnail {
     max-width: 125px;
@@ -150,5 +158,10 @@ they link to a thread from catalog vvv */
 
     .form-group textarea {
         width: 500px;
+    }
+
+    .post-container {
+    
+        max-width: 75%;
     }
 }

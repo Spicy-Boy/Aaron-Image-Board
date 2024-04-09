@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Thread</title>
 
-    <link rel="stylesheet" href="../public/css/style.css">
-</head>
+<%- include("./partials/head") %>
+
 <body>
-    
     <div class="wrapper-main">
-
-        <div class="options">
-
-            <ul>
-                <li>
-                    [<a href="/">Home</a>]
-                </li>
-            </ul>
-
-        </div>
-        <br>
+        <%- include("./partials/top-nav") %>
 
         <div class="banner">
-            <img src="../public/images/kirby-eat.gif">
-            <h2>THREAD: [thread name]</h2>
+            <img src="images/kirby-eat.gif">
+            <h2>THREAD: <%=thread.title%></h2>
 
         </div>
         <hr>
-        
+
+        <!-- container for the CREATE NEW THREAD form -->
         <div class="new-thread">
 
-            <form action="/api/threads/createThread" method="post">
+            <form action="/api/threads/createPostInThread" method="post">
 
                 <div class="form-group">
                     <label for="username">Name</label>
                     <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Subject</label>
+                    <input type="text" id="title" name="title">
                 </div>
 
                 <br>
@@ -56,23 +49,16 @@
 
                 <input type="submit" value="Post Reply">
             </form>
-
-
         </div>
         <hr>
-        <div class="options">
 
-            <ul>
-                <li>
-                    [<a href="#bottom">Bottom</a>]
-                </li>
-            </ul>
-
-        </div>
-        <hr>
+        <%- include("./partials/options-nav") %>
 
         <div class="thread">
 
+            <%thread.posts.forEach( (post) => { %>
+                
+            <%});%>
             <div class="post-container">
                 <div class="reply-arrows">>></div>
                 <div class="img-and-text-wrapper post-reply">
@@ -96,10 +82,9 @@
 
     </div>
 
-    <footer id="bottom">
-        <br>
-        <center>footer!!</center>
-    </footer>
-
+    </div>
 </body>
-</html>
+
+<%- include("./partials/footer") %>
+
+

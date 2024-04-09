@@ -19,6 +19,11 @@ async function renderCatalogPage(req, res)
     }
 }
 
+async function renderSingleThreadPage(req, res)
+{
+    
+}
+
 module.exports = {
     renderCatalogPage
 };

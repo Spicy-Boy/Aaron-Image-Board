@@ -85,6 +85,11 @@ async function createOneThread(req, res)
     }
 }
 
+async function createPostInThread (req, res)
+{
+    
+}
+
 module.exports = {
     getAllThreads,
     createOneThread
