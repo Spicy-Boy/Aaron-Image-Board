@@ -37,7 +37,22 @@ async function renderSingleThreadPage(req, res)
     }
 }
 
+async function renderRegisterNewUserPage (req, res)
+{
+    try{
+        res.render("registerNewUser");
+    } catch (error) {
+        let errorObj = {
+            message: "renderNewUserPage failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
+}
+
 module.exports = {
     renderCatalogPage,
-    renderSingleThreadPage
+    renderSingleThreadPage,
+    renderRegisterNewUserPage
 };

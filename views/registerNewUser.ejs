@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body>
+    <div class="wrapper-main">
+        <%- include("./partials/top-nav") %>
+
+        <div class="banner">
+
+            <h2>Register a new account!</h2>
+            <h3>Choose a unique username and password</h3>
+
+        </div>
+        <hr>
+
+        <!-- form for user registration vvv -->
+
+        <form action="/api/registerNewUser" method="post">
+
+            <div class="form-group">
+                <label for="username">New Username</label>
+                <input type="text" id="username" name="username" placeholder="" value="">
+            </div>
+
+        </form>
+
+    </div>
+
+    <%- include("./partials/footer") %>
+</body>

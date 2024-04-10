@@ -37,6 +37,9 @@ app.use("/", viewRouter);
 const threadRouter = require("./routes/threadRouter");
 app.use("/api/threads", threadRouter);
 
+const userRouter = require("./routes/userRouter");
+app.use("/api/users", userRouter);
+
 //TODO: posts
 //vv post creation not ENABLED yet!
 // const postRouter = require("./routes/postRouter");
