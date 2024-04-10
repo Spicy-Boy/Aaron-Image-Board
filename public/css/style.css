@@ -57,7 +57,9 @@ body {
     padding: 0;
     display: inline;
 }
+
 .options a {
+    color: blue;
     text-decoration: none;
     font-size: 90%
 }

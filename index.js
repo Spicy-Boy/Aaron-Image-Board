@@ -5,7 +5,11 @@ const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override");
 
-//MIDDLEWARE
+//LOGIN and SESSION Middleware
+const session = require('express-session');
+require("dotenv").config();
+
+//APP MIDDLEWARE
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -13,6 +17,18 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
+//LOGIN SESSION Middleware
+app.use(session(
+    {
+        secret: process.env.SECRET_SESSION_KEY,
+        resave: false,
+        saveUninitialized: true,
+        cookies: {
+            maxAge: 24*60*60*1000 // 24 hours before logged out automagically
+        }
+    }
+));
 
 //ROUTES!
 const viewRouter = require("./routes/viewRouter");
