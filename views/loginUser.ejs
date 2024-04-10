@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body>
+    <div class="wrapper-main">
+        <%- include("./partials/top-nav") %>
+
+        <div class="banner">
+
+            <h2>Login</h2>
+
+        </div>
+        <hr>
+
+        <!-- form for user registration vvv -->
+
+        <form action="/api/users/LoginUser" method="post">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="" value="">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" placeholder="" value="">
+            </div>
+
+            <br>
+
+            <input type="submit" value="Login">
+
+        </form>
+
+    </div>
+
+    <%- include("./partials/footer") %>
+</body>

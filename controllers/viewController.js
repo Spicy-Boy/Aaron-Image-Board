@@ -51,8 +51,25 @@ async function renderRegisterNewUserPage (req, res)
     }
 }
 
+async function renderLoginPage (req, res)
+{
+    try{
+        res.render("loginUser");
+    } catch (error) {
+        let errorObj = {
+
+            message: "renderLoginPage failed",
+            payload: error
+            
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
+}
+
 module.exports = {
     renderCatalogPage,
     renderSingleThreadPage,
-    renderRegisterNewUserPage
+    renderRegisterNewUserPage,
+    renderLoginPage
 };

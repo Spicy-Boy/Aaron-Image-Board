@@ -17,10 +17,12 @@ async function registerNewUser(req, res)
 
         await User.create(newUser);
 
-        res.json({
-            message: "register new user success",
-            payload: newUser
-        });
+        res.redirect("/");
+
+        // res.json({
+        //     message: "register new user success",
+        //     payload: newUser
+        // });
 
     } catch (error) {
         let errorObj = {
@@ -32,6 +34,41 @@ async function registerNewUser(req, res)
     }
 }
 
+async function loginUser(req, res) 
+{
+    try{
+
+        const {username, password} = req.body;
+
+        //find the target user based on entered username
+        let foundUser = await User.findOne({username});
+
+        //verify the password is correct
+        const isCorrectPassword = await argon2.verify(foundUser.password, password);
+
+        if (isCorrectPassword) 
+        {
+            req.session.userId = foundUser._id;
+
+            res.redirect('/');
+        } else {
+            res.json({
+                message: "function excecuted properly",
+                payload: "incorrect password! try again"
+            });
+        }
+
+    } catch (error) {
+        let errorObj = {
+            message: "loginUser failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
+}
+
 module.exports = {
-    registerNewUser
+    registerNewUser,
+    loginUser
 };
