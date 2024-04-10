@@ -58,9 +58,9 @@ body {
     display: inline;
 }
 
-/* .flex-right-justify li{
-    justify-content: right;
-} */
+.right-justify{
+    float: right;
+}
 
 .options a {
     color: blue;
