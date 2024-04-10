@@ -95,9 +95,37 @@ async function renderLoginPage (req, res)
     }
 }
 
+async function logoutUser(req, res) 
+{
+    try{
+        req.session.destroy(err => {
+            if (err) 
+            {
+                console.error("error destroying session:",err);
+                res.status(500).json({
+                    message: "logout failure",
+                    payload: "Error logging out"
+                });
+            }
+            else
+            {
+                res.redirect("/");
+            }
+        });
+    } catch (error) {
+        let errorObj = {
+            message: "renderNewUserPage failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
+}
+
 module.exports = {
     renderCatalogPage,
     renderSingleThreadPage,
     renderRegisterNewUserPage,
-    renderLoginPage
+    renderLoginPage,
+    logoutUser
 };
