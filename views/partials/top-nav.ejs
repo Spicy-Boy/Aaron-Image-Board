@@ -4,16 +4,21 @@
         <li>
             [<a href="/">Home</a>]
         </li>
+    </ul>
+
+    <ul class="right-justify">
         <li>
             [<a href="/register">Register</a>]
         </li>
+        <%if (!activeUser) {%>
         <li>
             [<a href="/login">Login</a>]
         </li>
-        <%  %>
+        <%}else{%>
         <li>
-
+            [<a href="/login">Logout</a>]
         </li>
+        <%}%>
     </ul>
 
 </div>

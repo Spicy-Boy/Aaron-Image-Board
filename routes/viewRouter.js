@@ -7,13 +7,17 @@ const {
     renderLoginPage
 } = require("../controllers/viewController");
 
-router.get("/", renderCatalogPage);
+const {
+    isLoggedIn
+} = require("./authMiddleware");
 
-router.get("/register", renderRegisterNewUserPage);
+router.get("/", isLoggedIn, renderCatalogPage);
 
-router.get("/login", renderLoginPage)
+router.get("/register", isLoggedIn, renderRegisterNewUserPage);
+
+router.get("/login", isLoggedIn, renderLoginPage)
 
 //DYNAMIC PARAMETERS MUST COME AFTER ALL NON DYNAMIC!!
-router.get("/:threadNo", renderSingleThreadPage);
+router.get("/:threadNo", isLoggedIn, renderSingleThreadPage);
 
 module.exports = router;

@@ -10,7 +10,12 @@
         <div class="banner">
             <img src="images/kirby-eat.gif">
             <h2>WELCOME TO AARON'S MAGIC IMAGEBOARD!</h2>
-
+            
+            <% if (activeUser) {%>
+                <h4>
+                    Hello <%=activeUser.username%>
+                </h4>
+            <%}%>
         </div>
         <hr>
 

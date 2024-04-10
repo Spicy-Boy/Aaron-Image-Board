@@ -3,6 +3,9 @@
 
 ```
 TODO~
+- Lines 71 and 113 in threadController, redirect to /thread/:threadNo instead of just /:threadNo to prevent glitches.
+    - possibly other locations in code as well, just route threads through /thread or similar diliniater
+
 - Figure out cloud storage or something for images 
 ```
 

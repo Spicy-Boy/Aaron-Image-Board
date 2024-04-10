@@ -58,6 +58,10 @@ body {
     display: inline;
 }
 
+/* .flex-right-justify li{
+    justify-content: right;
+} */
+
 .options a {
     color: blue;
     text-decoration: none;
