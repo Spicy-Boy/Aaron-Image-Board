@@ -46,11 +46,14 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    /* display: inline-block; */
 }
 .options ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    /* width: 50%; */
 }
 .options li {
     margin: 0;

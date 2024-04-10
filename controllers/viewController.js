@@ -39,7 +39,7 @@ async function renderSingleThreadPage(req, res)
         //gets all threads
         let result = await Thread.findOne({threadNo: req.params.threadNo});
 
-        res.render("singleThread", {activeUser: req.session.activeUser});
+        res.render("singleThread", {thread: result, activeUser: req.session.activeUser});
 
     } catch (error) {
         let errorObj = {
