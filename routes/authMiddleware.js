@@ -1,10 +1,11 @@
 const User = require("../models/userModel");
 
-// TLDR: checks if session exists and session contains user's unique ID... if so CONTINUE, else redirect to login page
+// TLDR: checks if a session exists and session contains user's unique ID... if so CONTINUE, else redirect to login page
 function requireAuth(req, res, next) {
     if (req.session && req.session.userId) {
         return next();
     } else {
+        req.session.loginMessage = "You must login to access this page.";
         res.redirect('/login');
     }
 }

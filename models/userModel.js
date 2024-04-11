@@ -12,9 +12,13 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     // vv array of threadNos that user has posted to
-    threadsInteractedWith: [Number],
+    threadsCreated: [Number],
     // vv array of postNos that user has submitted
-    threadsInteractedWith: [Number],
+    postsCreated: [Number],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const User = mongoose.model("User", userSchema);

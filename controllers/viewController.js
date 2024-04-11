@@ -82,7 +82,7 @@ async function renderLoginPage (req, res)
         //     userInfo.password = "";
         // }
 
-        res.render("loginUser"/*, {activeUser: userInfo}*/, {activeUser: req.session.activeUser});
+        res.render("loginUser"/*, {activeUser: userInfo}*/, {activeUser: req.session.activeUser, loginMessage: req.session.loginMessage});
     } catch (error) {
         let errorObj = {
 
@@ -122,10 +122,16 @@ async function logoutUser(req, res)
     }
 }
 
+async function renderUserPortal(req, res)
+{
+
+}
+
 module.exports = {
     renderCatalogPage,
     renderSingleThreadPage,
     renderRegisterNewUserPage,
     renderLoginPage,
-    logoutUser
+    logoutUser,
+    renderUserPortal
 };

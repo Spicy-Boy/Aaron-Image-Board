@@ -22,38 +22,32 @@
         <!-- container for the CREATE NEW THREAD form -->
         <div class="new-thread">
 
-            <form action="/api/threads/createThread" method="post">
-
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="title">Subject</label>
-                    <input type="text" id="title" name="title">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="content">Comment</label>
-                    <textarea id="content" name="content" rows="4" cols="50"></textarea>
-                </div>
+            <div class="flex-centered">
+                <form action="/api/threads/createThread" method="post">
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="title">Subject</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="content">Comment</label>
+                        <textarea id="content" name="content" rows="4" cols="50"></textarea>
+                    </div>
                 
-                <br>
-
-                <div class="form-group">
-                    <label for="img">Img URL</label>
-                    <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
-                </div>
-
-                <br>
-
-                <input type="submit" value="Post Thread">
-            </form>
+                    <br>
+                    <div class="form-group">
+                        <label for="img">Img URL</label>
+                        <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
+                    </div>
+                    <br>
+                    <input type="submit" value="Post Thread">
+                </form>
+            </div>
         </div>
         <hr>
 
@@ -75,6 +69,7 @@
 
         </div>
 
+        <%- include("./partials/bottom-nav") %>
     </div>
 
     <%- include("./partials/footer") %>

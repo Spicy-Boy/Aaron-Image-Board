@@ -7,16 +7,25 @@
     </ul>
 
     <ul class="right-justify">
+        <%if (activeUser) {%>
         <li>
-            [<a href="/register">Register</a>]
+            Hello <a href="/userPortal"><span class="greeting-username"><%=activeUser.username%></span></a>&nbsp;
         </li>
+        <%}%>
         <%if (!activeUser) {%>
         <li>
             [<a href="/login">Login</a>]
         </li>
         <%}else{%>
         <li>
+            &nbsp;
             [<a href="/logout">Logout</a>]
+        </li>
+        <%}%>
+        <%if (!activeUser) {%>
+        <li>
+            &nbsp;
+            [<a href="/register">Register</a>]
         </li>
         <%}%>
     </ul>

@@ -16,28 +16,24 @@
         <hr>
 
         <!-- form for user registration vvv -->
+        <br>
+        <br>
 
-        <form action="/api/users/registerNewUser" method="post">
-
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="" value="">
-            </div>
-
-            <br>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="text" id="password" name="password" placeholder="" value="">
-            </div>
-
-            <br>
-
-            <input type="submit" value="Register">
-
-        </form>
+        <div class="flex-centered">
+            <form action="/api/users/registerNewUser" method="post">
+                <div class="form-group">
+                    <label for="username">New Username</label>
+                    <input type="text" id="username" name="username" placeholder="" value="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Unique Password</label>
+                    <input type="text" id="password" name="password" placeholder="" value="">
+                </div>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
 
     </div>
-
-    <%- include("./partials/footer") %>
 </body>

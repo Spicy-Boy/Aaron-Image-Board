@@ -68,13 +68,21 @@ body {
 .options a {
     color: blue;
     text-decoration: none;
-    font-size: 90%
+    font-size: 90%;
 }
 .options a:visited {
     color: blue;
 }
+
 .options a:hover {
     color: red;
+}
+
+.greeting-username {
+    font-size: 16px;
+    color: rgb(0, 150, 0);
+    margin-bottom: -0.2em;
+    text-decoration: underline;
 }
 
 .catalog {
@@ -158,6 +166,17 @@ they link to a thread from catalog vvv */
 }
 .post-message {
     font-size: 10pt;
+}
+
+/* pure utility classes vvv */
+
+.flex-centered {
+    display: flex; 
+    justify-content: center;
+}
+
+.warning-text {
+    color: rgb(190, 0, 0);
 }
 
 /* DESKTOP style, screens > 800 pixels ;) */
