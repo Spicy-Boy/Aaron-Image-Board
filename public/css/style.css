@@ -168,11 +168,34 @@ they link to a thread from catalog vvv */
     font-size: 10pt;
 }
 
+/* USER PAGE */
+.thread-information {
+    font-size: 14px;
+}
+
+.user-portal-post-container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 35%;
+}
+
 /* pure utility classes vvv */
 
 .flex-centered {
     display: flex; 
     justify-content: center;
+}
+.flex-space-around {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.flex-space-around h4{
+    text-align: center;
+}
+
+.flex-basis-45 {
+    flex-basis: 45%;
 }
 
 .warning-text {
@@ -192,5 +215,10 @@ they link to a thread from catalog vvv */
     .post-container {
     
         max-width: 75%;
+    }
+
+    /*User Page*/
+    .flex-space-around {
+        flex-direction: row;
     }
 }

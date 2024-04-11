@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("./partials/head") %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Portal test :D</title>
+
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+</head>
 
 <body>
     <div class="wrapper-main">
-        <%- include("./partials/top-nav") %>
+
+        <div class="options">
+
+            <ul>
+                <li>
+                    [<a href="/">Home</a>]
+                </li>
+            </ul>
+
+        </div>
+        <br>
 
         <div class="banner">
             
@@ -13,9 +29,57 @@
             
         </div>
         <hr>
-        
-    </div>
 
-    <%- include("./partials/footer") %>
+        <div class="flex-space-around">
+
+            <div class="flex-basis-45">
+                <h4>Your threads</h4>
+                <div class="thread">
+                    <div class="user-portal-post-container">
+                        <div class="reply-arrows">>></div>
+                        <div class="img-and-text-wrapper post-reply">
+                            <div class="thread-information">
+                                Thread Title, Thread No. 1
+                            </div>
+                            <div class="post-user-information">
+                                <span class="username"><%=post.username%></span>
+                                <!-- <span class="date">04/08/24(Mon)</span> -->
+                                <span class="date"> <%=post.createdAt%></span>
+                                <span class="postNo"> No.<%=post.postNo%></span>
+                            </div>
+                            <div class="post-img-header">
+                                File: Name.png (??? KB, WidthxHeight)  
+                            </div>
+                            <img src="https://i.imgur.com/ICL4ZCe.png" class="post-thumbnail">
+                            <blockquote class="post-message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-basis-45">
+                <h4>Your Posts</h4>
+                <div class="thread">
+                    <div class="user-portal-post-container">
+                        <div class="reply-arrows">>></div>
+                        <div class="img-and-text-wrapper post-reply">
+                            <div class="post-user-information">
+                                <span class="username"><%=post.username%></span>
+                                <!-- <span class="date">04/08/24(Mon)</span> -->
+                                <span class="date"> <%=post.createdAt%></span>
+                                <span class="postNo"> No.<%=post.postNo%></span>
+                            </div>
+                            <div class="post-img-header">
+                                File: Name.png (??? KB, WidthxHeight)  
+                            </div>
+                            <img src="https://i.imgur.com/ICL4ZCe.png" class="post-thumbnail">
+                            <blockquote class="post-message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </body>

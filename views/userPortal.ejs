@@ -4,79 +4,22 @@
 <%- include("./partials/head") %>
 
 <body>
+
     <div class="wrapper-main">
         <%- include("./partials/top-nav") %>
 
         <div class="banner">
-            <img src="images/kirby-eat.gif">
-            <h2>WELCOME TO AARON'S MAGIC IMAGEBOARD!</h2>
             
-            <% if (activeUser) {%>
-                <h4>
-                    Hello <%=activeUser.username%>
-                </h4>
-            <%}%>
-        </div>
-        <hr>
-
-        <!-- container for the CREATE NEW THREAD form -->
-        <div class="new-thread">
-
-            <form action="/api/threads/createThread" method="post">
-
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="title">Subject</label>
-                    <input type="text" id="title" name="title">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="content">Comment</label>
-                    <textarea id="content" name="content" rows="4" cols="50"></textarea>
-                </div>
-                
-                <br>
-
-                <div class="form-group">
-                    <label for="img">Img URL</label>
-                    <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
-                </div>
-
-                <br>
-
-                <input type="submit" value="Post Thread">
-            </form>
+            <h2>This is your personal dashboard, USER</h2>
+            
         </div>
         <hr>
 
         <%- include("./partials/options-nav") %>
 
-        <div class="catalog">
-
-            <%threads.forEach( (thread) => {%>
-                <div class="thread-post">
-                    <a href="/<%=thread.threadNo%>">
-                        <img src="<%=thread.posts[0].img%>">
-                    </a>
-                    <div class="teaser">
-                        <b><%=thread.title%></b>
-                        <%=thread.posts[0].textContent%>
-                    </div>
-                </div>
-            <%});%>
-
-        </div>
-
     </div>
 
+    <%- include("./partials/bottom-nav") %>
     <%- include("./partials/footer") %>
 
 </body>
