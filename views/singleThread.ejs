@@ -50,7 +50,7 @@
             <%thread.posts.forEach( (post) => { %>    
                 <div class="post-container">
                     <div class="reply-arrows">>></div>
-                    <div class="img-and-text-wrapper post-reply">
+                    <div class="post-reply" id="<%=post.postNo%>">
 
                         <div class="post-user-information">
                             <span class="username"><%=post.username%></span>
@@ -72,7 +72,7 @@
 
                             <img src="<%=post.img%>" class="post-thumbnail">
                         <%}%>
-                        <blockquote class="post-message"><%=post.textContent%></blockquote>
+                        <blockquote class="post-message preserve-whitespace"><%=post.textContent%></blockquote>
 
                     </div>
                 </div>
@@ -84,6 +84,9 @@
     </div>
     <%- include("./partials/bottom-nav") %>
     <%- include("./partials/footer") %>
+
+    <script src="js/createReplyLinks.js"></script>
+
 </body>
 
 

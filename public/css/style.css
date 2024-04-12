@@ -134,16 +134,15 @@ they link to a thread from catalog vvv */
     padding-top: 6px;
 }
 
-.img-and-text-wrapper {
-
-}
-
 /* vvv posts that aren't the OP (first post) */
 .post-reply {
     background-color: #d6daf0;
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 5px;
+}
+.highlighted {
+    background-color: #d6bad0;
 }
 
 .post-img-header {
@@ -168,6 +167,10 @@ they link to a thread from catalog vvv */
     font-size: 10pt;
 }
 
+.reply-link:hover {
+    color: red;
+}
+
 /* USER PAGE */
 .thread-information {
     font-size: 14px;
@@ -180,6 +183,10 @@ they link to a thread from catalog vvv */
 }
 
 /* pure utility classes vvv */
+
+.preserve-whitespace {
+    white-space: pre-line;
+}
 
 .flex-centered {
     display: flex; 
