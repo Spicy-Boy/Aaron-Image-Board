@@ -144,6 +144,9 @@ they link to a thread from catalog vvv */
 .highlighted {
     background-color: #d6bad0;
 }
+.perma-highlighted {
+    background-color: #d6bad0;
+}
 
 .post-img-header {
     padding-bottom: 2px;
