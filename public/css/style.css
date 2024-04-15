@@ -140,6 +140,7 @@ they link to a thread from catalog vvv */
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 5px;
+    border-bottom: 1px solid #b7c5d9;
 }
 
 /* for referenced posts vv */
@@ -148,6 +149,10 @@ they link to a thread from catalog vvv */
     /* position: relative; */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 9999;
+    border: 1px solid #b7c5d9;
+    /* min-height: 125px;
+    min-width: 125px; */
+    box-sizing: border-box;
 }
 .highlighted {
     background-color: #d6bad0;
