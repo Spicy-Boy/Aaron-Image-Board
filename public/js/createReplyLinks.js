@@ -38,6 +38,35 @@ arrPostReplies.forEach( (post, i) => {
     post.innerHTML = post.innerHTML.replaceAll(temporaryLinkIdentifier, "&gt;&gt;");
 });
 
+//add event listeners to each link with a reference back to the original post
+for (let postNo of postIDs)
+{
+    let links = document.getElementsByClassName("referencing-"+postNo);
+    let referencedPost = arrPostReplies.find( otherPost => otherPost.id === postNo);
+    if (links.length > 0)
+    {
+        // console.log('Detected',links.length+" links referencing",postNo);
+        // console.log(links);
+        Array.from(links).forEach((link) => {
+            link.addEventListener("mouseenter", () => {
+                referencedPost.classList.add("highlighted");
+            });
+            link.addEventListener("mouseleave", () => {
+                referencedPost.classList.remove("highlighted");
+            });
+            link.addEventListener("click", () => {
+                let highElements = document.querySelectorAll('.perma-highlighted');
+
+                highElements.forEach( (element) => {
+                    element.classList.remove('perma-highlighted');
+                });
+
+                referencedPost.classList.add("perma-highlighted");
+            });
+        });
+    }
+}
+
 // DOESNT WORK vvv
             // //the post that the link is referencing
             // const referencedPost = arrPostReplies.find( otherPost => otherPost.id === postNo);
