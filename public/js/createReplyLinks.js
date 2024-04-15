@@ -48,8 +48,27 @@ for (let postNo of postIDs)
         // console.log('Detected',links.length+" links referencing",postNo);
         // console.log(links);
         Array.from(links).forEach((link) => {
-            link.addEventListener("mouseenter", () => {
+            link.addEventListener("mouseenter", (event) => {
+                //highlight referenced post vv
                 referencedPost.classList.add("highlighted");
+
+                //create a little pop up of the post vvv
+                const popupPost = document.createElement('div');
+                
+                clonedPost = referencedPost.cloneNode(true);
+                popupPost.appendChild(clonedPost);
+
+                popupPost.classList.add("popup");
+
+                // let linkRectangle = link.getBoundingClientRect();
+                // popupPost.style.top = linkRectangle.bottom+'px';
+                // popupPost.style.left = linkRectangle.left+'px';
+                popupPost.style.top = event.clientX+'px';
+                popupPost.style.left = event.clientY+'px';
+
+                document.body.appendChild(popupPost);
+                console.log(popupPost);
+
             });
             link.addEventListener("mouseleave", () => {
                 referencedPost.classList.remove("highlighted");

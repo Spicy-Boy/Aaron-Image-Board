@@ -141,6 +141,14 @@ they link to a thread from catalog vvv */
     margin-bottom: 2px;
     padding: 5px;
 }
+
+/* for referenced posts vv */
+.popup {
+    position: absolute;
+    /* position: relative; */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
 .highlighted {
     background-color: #d6bad0;
 }
