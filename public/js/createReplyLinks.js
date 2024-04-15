@@ -22,29 +22,46 @@ arrPostReplies.forEach( (post, i) => {
     {
         //TESTER vv
         // console.log('ITERATING OVER',postNo);
+        let referencedPost = arrPostReplies.find( otherPost => otherPost.id === postNo);
         
         if (post.innerHTML.includes("&gt;&gt;"+postNo))
         {
             //add a hyperlinklink replacing any valid >>postNo key in a user's post
             // NOTE: &gt;&gt; is ">>"
-
             post.innerHTML = post.innerHTML.replaceAll("&gt;&gt;"+postNo, `<a href="#${postNo}" class="referencing-${postNo} reply-link">${temporaryLinkIdentifier}${postNo}</a>`);
+
+            //add a link to the reply back at the referenced post
+            let replySpan = referencedPost.getElementsByClassName("replies")[0];
+
+            let linkToReply = document.createElement('a');
+            linkToReply.href = "#"+post.id;
+            linkToReply.innerText = temporaryLinkIdentifier+post.id;
+
+            //add event listeners to links
+
+            replySpan.appendChild(linkToReply);
+            replySpan.innerHTML += '&nbsp;';
+            //tester vv
+            // console.log(replySpan);
 
             //TODO: add a little window that pops up of the referenced post when hovering reply link :D
             //TODO: greentext! Or red text, or whatever I want :)
-        }
-    }
 
+
+        }
+        referencedPost.innerHTML = referencedPost.innerHTML.replaceAll(temporaryLinkIdentifier, "&gt;&gt;");
+    }
     post.innerHTML = post.innerHTML.replaceAll(temporaryLinkIdentifier, "&gt;&gt;");
 });
 
-//add event listeners to each link with a reference back to the original post
+//add event listeners to each link with a reference back to the original post, add reply backlinks to referenced post
 for (let postNo of postIDs)
 {
     let links = document.getElementsByClassName("referencing-"+postNo);
     let referencedPost = arrPostReplies.find( otherPost => otherPost.id === postNo);
     if (links.length > 0)
     {
+
         // console.log('Detected',links.length+" links referencing",postNo);
         // console.log(links);
         Array.from(links).forEach((link) => {
