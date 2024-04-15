@@ -36,9 +36,8 @@ arrPostReplies.forEach( (post, i) => {
             let linkToReply = document.createElement('a');
             linkToReply.href = "#"+post.id;
             linkToReply.innerText = temporaryLinkIdentifier+post.id;
-
-            //add event listeners to links
-
+            linkToReply.classList.add("referencing-"+post.id);
+            
             replySpan.appendChild(linkToReply);
             replySpan.innerHTML += '&nbsp;';
             //tester vv
@@ -46,8 +45,6 @@ arrPostReplies.forEach( (post, i) => {
 
             //TODO: add a little window that pops up of the referenced post when hovering reply link :D
             //TODO: greentext! Or red text, or whatever I want :)
-
-
         }
         referencedPost.innerHTML = referencedPost.innerHTML.replaceAll(temporaryLinkIdentifier, "&gt;&gt;");
     }
@@ -68,7 +65,6 @@ for (let postNo of postIDs)
             link.addEventListener("mouseenter", (event) => {
                 //highlight referenced post vv
                 referencedPost.classList.add("highlighted");
-
 
                 //create a little pop up of the post vvv if reference is outside window
                 if (!isElementVisibleInViewport(referencedPost))
@@ -132,3 +128,52 @@ function isElementVisibleInViewport (elem)
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+/* Unused back link pop up code*/
+// linkToReply.addEventListener("mouseenter", (event) => {
+//     //highlight referenced post vv
+//     post.classList.add("highlighted");
+//     //add event listeners to back links
+//     if (!isElementVisibleInViewport(post))
+//     {
+//         const popupPost = document.createElement('div');
+        
+//         popupPost.innerHTML = post.innerHTML;
+
+//         popupPost.classList.add("post-reply");
+//         popupPost.classList.add("popup");
+
+//         let linkRectangle = link.getBoundingClientRect();
+//         popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY)+'px';
+//         // vv horizontally offset by hard coded 15 px
+//         popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px';
+
+//         // popupPost.style.top = (popupPost.style.top - popupPost.offsetHeight)+"px";
+//         document.body.appendChild(popupPost);
+//         // console.log(popupPost);
+
+//         //vv position the pop up div halfway to the right of the link
+//         let popupHeight = popupPost.offsetHeight;
+
+//         popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY-(popupHeight/2))+'px';
+//         console.log('hover');
+//     }
+// });
+// linkToReply.addEventListener("mouseleave", () => {
+//     post.classList.remove("highlighted");
+
+//     // remove existing popup
+//     const popupPost = document.querySelector('.popup');
+//     if (popupPost) {
+//         popupPost.remove();
+//     }
+// });
+// linkToReply.addEventListener("click", () => {
+//     let highElements = document.querySelectorAll('.perma-highlighted');
+
+//     highElements.forEach( (element) => {
+//         element.classList.remove('perma-highlighted');
+//     });
+
+//     post.classList.add("perma-highlighted");
+// });
