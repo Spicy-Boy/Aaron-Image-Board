@@ -173,6 +173,19 @@ they link to a thread from catalog vvv */
 .username {
     color: #2c845a;
 }
+/* vv when a user references this post, add link to this span */
+.replies {
+    font-size: 8pt;
+}
+.replies a {
+    color: #34345c;
+}
+.replies a:visited {
+    color: #34345c;
+}
+.replies a:hover {
+    color: red;
+}
 .post-thumbnail {
     max-width: 125px;
     max-height: 125px;

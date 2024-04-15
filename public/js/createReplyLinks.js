@@ -58,19 +58,27 @@ for (let postNo of postIDs)
                 {
                     const popupPost = document.createElement('div');
                     
-                    clonedPost = referencedPost.cloneNode(true);
-                    popupPost.appendChild(clonedPost);
+                    //clone method vvv doesnt copy style right
+                    // clonedPost = referencedPost.cloneNode(true);
+                    // popupPost.appendChild(clonedPost);
+                    popupPost.innerHTML = referencedPost.innerHTML;
 
+                    popupPost.classList.add("post-reply");
                     popupPost.classList.add("popup");
 
                     let linkRectangle = link.getBoundingClientRect();
-                    // popupPost.style.top = linkRectangle.bottom+'px';
-                    // popupPost.style.left = linkRectangle.left+'px';
                     popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY)+'px';
-                    popupPost.style.left = linkRectangle.left+'px';
+                    // vv horizontally offset by hard coded 15 px
+                    popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px';
 
+                    // popupPost.style.top = (popupPost.style.top - popupPost.offsetHeight)+"px";
                     document.body.appendChild(popupPost);
                     // console.log(popupPost);
+
+                    //vv position the pop up div halfway to the right of the link
+                    let popupHeight = popupPost.offsetHeight;
+                    console.log(popupHeight);
+                    popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY-(popupHeight/2))+'px';
                 }
 
             });
