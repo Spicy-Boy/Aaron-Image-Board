@@ -81,8 +81,21 @@ for (let postNo of postIDs)
 
                     let linkRectangle = link.getBoundingClientRect();
                     popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY)+'px';
-                    // vv horizontally offset by hard coded 15 px
-                    popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px';
+
+                    let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+                    if (linkRectangle.left < (viewportWidth/2))
+                    {
+                        // vv horizontally offset by hard coded 15 px
+                        popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px'; 
+                    }
+                    else 
+                    {
+                        // vv horizontally offset by hard coded 15 px
+                        popupPost.style.left = linkRectangle.left-linkRectangle.width-500-15+'px'; 
+                        // popupPost.offsetWidth
+
+                    }
+
 
                     // popupPost.style.top = (popupPost.style.top - popupPost.offsetHeight)+"px";
                     document.body.appendChild(popupPost);
@@ -90,7 +103,7 @@ for (let postNo of postIDs)
 
                     //vv position the pop up div halfway to the right of the link
                     let popupHeight = popupPost.offsetHeight;
-                    console.log(popupHeight);
+                    // console.log(popupHeight);
                     popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY-(popupHeight/2))+'px';
                 }
 

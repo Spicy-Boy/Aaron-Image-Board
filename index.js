@@ -9,6 +9,19 @@ const methodOverride = require("method-override");
 const session = require('express-session');
 require("dotenv").config();
 
+//TO MAKE RENDER WORK vv ~~
+const MongoDBSessionStore = require("connect-mongodb-session")(session);
+// Initialize MongoDB session store
+const store = new MongoDBSessionStore({
+    uri: process.env.MONGODB_URI,
+    collection: "sessions" // Collection name to store sessions
+});
+// Catch errors
+store.on("error", function(error) {
+    console.error(error);
+});
+//~~
+
 //APP MIDDLEWARE
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
