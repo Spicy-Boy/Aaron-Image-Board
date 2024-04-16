@@ -95,8 +95,7 @@ for (let postNo of postIDs)
                     //     // vv horizontally offset by hard coded 15 px
                     //     popupPost.style.left = linkRectangle.left-linkRectangle.width-500-15+'px'; 
                     //     // popupPost.offsetWidth
-
-                    }
+                    // }
 
 
                     // popupPost.style.top = (popupPost.style.top - popupPost.offsetHeight)+"px";
