@@ -16,8 +16,6 @@
         <hr>
 
             <!-- container for the CREATE NEW THREAD form -->
-
-
             <div class="flex-centered">
                 <form id="submission-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" method="post">
                     <div class="form-group">
@@ -39,8 +37,6 @@
                     <input type="submit" value="Post Reply">
                 </form>
             </div>
-
-
         <hr>
 
         <%- include("./partials/options-nav") %>
@@ -57,6 +53,11 @@
                             <!-- <span class="date">04/08/24(Mon)</span> -->
                             <span class="date"> <%=post.createdAt%></span>
                             <span class="postNo"> No.<%=post.postNo%></span>
+                            <!-- old position vv replies at top -->
+                            
+                        </div>
+                        <div class="post-user-information">
+                            <span class="literally-the-word-replies">Replies: </span>
                             <span class="replies"></span>
                         </div>
 
@@ -66,6 +67,10 @@
                                     <%
                                         // vv regex to remove most of url from link
                                         let fileName = post.img.replace(/.*\//, '');
+                                        if (fileName.length > 40)
+                                        {
+                                            fileName = fileName.substring(fileName.length-39);
+                                        }
                                     %>
                                     <%=fileName%>
                                 </a></span><span> (??? KB, WidthxHeight)    
@@ -74,7 +79,9 @@
                             <img src="<%=post.img%>" class="post-thumbnail">
                         <%}%>
                         <blockquote class="post-message preserve-whitespace"><%=post.textContent%></blockquote>
-
+                        <!-- <div class="post-user-information">
+                            <span class="replies"></span>
+                        </div> -->
                     </div>
                 </div>
 

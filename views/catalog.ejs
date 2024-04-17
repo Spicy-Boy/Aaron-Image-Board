@@ -60,6 +60,24 @@
                     <a href="/<%=thread.threadNo%>">
                         <img src="<%=thread.posts[0].img%>">
                     </a>
+                    <div class="thread-information">
+                        <span>
+                        <%
+                            let postsInThread = thread.posts;
+                            let numberOfImages = 0;
+                            postsInThread.forEach( (post, i) =>
+                            {
+                                if (post.img)
+                                {
+                                    numberOfImages++;
+                                }
+
+                            });
+                            numberOfImages--;
+                        %>
+                        R:<b> <%=thread.posts.length%></b><%if (numberOfImages > 0){%> / I:<b> <%=numberOfImages%></b><%}%>
+                        </span>
+                    </div>
                     <div class="teaser">
                         <b><%=thread.title%></b>
                         <%=thread.posts[0].textContent%>

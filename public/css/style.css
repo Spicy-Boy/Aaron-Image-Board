@@ -110,6 +110,10 @@ they link to a thread from catalog vvv */
     max-height: 150px;
     /* max-height: calc(var(--thread-post-height) / 1.5); */
 }
+.thread-information span{
+    margin: 0;
+    font-size: 8pt;
+}
 /* vvv the text displayed in an individual thread-post in catalog */
 .teaser {
     font-size: 10pt;
@@ -198,6 +202,10 @@ they link to a thread from catalog vvv */
 
 .reply-link:hover {
     color: red;
+}
+
+.literally-the-word-replies {
+    display: none;
 }
 
 /* USER PAGE */

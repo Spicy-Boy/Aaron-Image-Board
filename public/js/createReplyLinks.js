@@ -40,6 +40,11 @@ arrPostReplies.forEach( (post, i) => {
             
             replySpan.appendChild(linkToReply);
             replySpan.innerHTML += '&nbsp;';
+
+            //vv the literal word "replies: " printed on posts with backlinks
+            replySignifier = referencedPost.getElementsByClassName("literally-the-word-replies")[0];
+            replySignifier.style.display = "inline";
+
             //tester vv
             // console.log(replySpan);
 
@@ -80,32 +85,30 @@ for (let postNo of postIDs)
                     popupPost.classList.add("popup");
 
                     let linkRectangle = link.getBoundingClientRect();
+
+                    //media query; display popup divs below link if page is too small
+                    let viewportWidth = window.innerWidth;
+
                     popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY)+'px';
 
                     popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px';
-                    //COMMENTED OUT vv while it is WIP--dynamic pop up post positioning
-                    // let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-                    // if (linkRectangle.left < (viewportWidth/2))
-                    // {
-                    //     // vv horizontally offset by hard coded 15 px
-                    //     popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px'; 
-                    // }
-                    // else 
-                    // {
-                    //     // vv horizontally offset by hard coded 15 px
-                    //     popupPost.style.left = linkRectangle.left-linkRectangle.width-500-15+'px'; 
-                    //     // popupPost.offsetWidth
-                    // }
 
-
-                    // popupPost.style.top = (popupPost.style.top - popupPost.offsetHeight)+"px";
                     document.body.appendChild(popupPost);
-                    // console.log(popupPost);
 
-                    //vv position the pop up div halfway to the right of the link
-                    let popupHeight = popupPost.offsetHeight;
-                    // console.log(popupHeight);
-                    popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY-(popupHeight/2))+'px';
+                    let popupHeight = popupPost.offsetHeight;  
+                    //media query repositioning of pop ups based on screen size
+                    if (viewportWidth < 800)
+                    {
+                        //div is placed beneath link and left justified if screen is too small
+                        popupPost.style.left = 10+"px";
+                        popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY)+'px';
+                    }
+                    else 
+                    {
+                        //vv position the pop up div halfway to the right of the link
+                        popupPost.style.top = (linkRectangle.top+linkRectangle.height+window.scrollY-(popupHeight/2))+'px';
+                    }
+
                 }
 
             });
@@ -142,6 +145,20 @@ function isElementVisibleInViewport (elem)
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+//COMMENTED OUT vv while it is WIP--dynamic pop up post positioning
+// let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+// if (linkRectangle.left < (viewportWidth/2))
+// {
+//     // vv horizontally offset by hard coded 15 px
+//     popupPost.style.left = linkRectangle.left+linkRectangle.width+15+'px'; 
+// }
+// else 
+// {
+//     // vv horizontally offset by hard coded 15 px
+//     popupPost.style.left = linkRectangle.left-linkRectangle.width-500-15+'px'; 
+//     // popupPost.offsetWidth
+// }
 
 /* Unused back link pop up code*/
 // linkToReply.addEventListener("mouseenter", (event) => {
