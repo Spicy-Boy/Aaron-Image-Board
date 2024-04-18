@@ -54,11 +54,6 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
-//TODO: posts
-//vv post creation not ENABLED yet!
-// const postRouter = require("./routes/postRouter");
-// app.use("api/posts", postRouter);
-
 //Turn on the app
 const PORT = 8080;
 app.listen(PORT, () => {
