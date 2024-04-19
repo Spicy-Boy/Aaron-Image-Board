@@ -53,10 +53,13 @@
 
         <%- include("./partials/options-nav") %>
 
+        <!-- HERE!! AARON TODO -->
+        <!-- SORT THREADS by most recent post to start! -->
+
         <div class="catalog">
 
             <%threads.forEach( (thread) => {%>
-                <div class="thread-post">
+                <div class="thread-post" data-threadNo="<%=thread.threadNo%>" data-numberOfPosts="<%=thread.posts.length%>" data-dateOfMostRecentPost="<%=thread.posts[thread.posts.length-1].createdAt.getTime()%>">
                     <a href="/<%=thread.threadNo%>">
                         <img src="<%=thread.posts[0].img%>">
                     </a>
@@ -91,5 +94,7 @@
     </div>
 
     <%- include("./partials/footer") %>
+
+    <script src="js/sortThreadsInCatalog.js"></script>
 
 </body>
