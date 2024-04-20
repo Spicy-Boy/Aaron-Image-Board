@@ -13,6 +13,7 @@ console.log(threads);
 **/
 
 let sortByDropdown = document.getElementById('sortByDropdown');
+sortByDropdown.value = "mostRecent";
 
 sortByDropdown.addEventListener('change', sortHtmlCollection);
 

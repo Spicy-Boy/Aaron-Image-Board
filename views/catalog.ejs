@@ -53,8 +53,10 @@
 
         <%- include("./partials/options-nav") %>
 
-        <!-- HERE!! AARON TODO -->
         <!-- SORT THREADS by most recent post to start! -->
+        <% threads.sort( (a,b) => {
+            return b.posts[b.posts.length-1].createdAt.getTime() - a.posts[a.posts.length-1].createdAt.getTime()
+        });%>
 
         <div class="catalog">
 
