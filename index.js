@@ -54,6 +54,9 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
+const uploadRouter = require("./routes/uploadRouter");
+app.use("/api/upload", uploadRouter);
+
 //Turn on the app
 const PORT = 8080;
 app.listen(PORT, () => {
@@ -67,5 +70,5 @@ mongoose.set('strictQuery', false);
 //connect to ye olde database (see .env file for database URI)
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
-    console.log("MongoDB Connected")
+    console.log("MongoDB Connected");
 });

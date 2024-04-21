@@ -17,6 +17,7 @@ async function isLoggedIn(req, res, next) {
         if (req.session && req.session.userId) 
         {
             req.session.activeUser = await User.findOne({_id: req.session.userId});
+            // vv changes the password into an empty string just in case
             req.session.activeUser.password = "";
 
             return next();
