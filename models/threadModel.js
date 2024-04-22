@@ -9,7 +9,7 @@ const threadSchema = new mongoose.Schema({
         username: String,
         textContent: { //string of message
             type: String,
-            required: true
+            default: "",
         },
         img: String, // a URL to an image
         postNo: {

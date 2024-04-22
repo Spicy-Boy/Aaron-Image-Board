@@ -4,6 +4,9 @@ const Thread = require("../models/threadModel");
 const PostNo = require("../models/postNoModel");
 const ThreadNo = require("../models/threadNoModel");
 
+//vv required to upload files to proper location
+const upload = require("../middlewares/multer");
+
 async function getAllThreads(req, res)
 {
     try{
@@ -89,7 +92,7 @@ async function createPostInThread (req, res)
 {
     try{
                 
-        //get thre thread
+        //get the thread
         let targetThread = await Thread.findOne({threadNo: req.params.threadNo});
         let threadNo = +req.params.threadNo;
 
@@ -108,15 +111,24 @@ async function createPostInThread (req, res)
         }
         else {
             let fileName = "";
-            upload.single('uploaded_file')(req, res, (error) => { 
+            upload.single('file')(req, res, (error) => { 
                 if (error)
                 {
                     console.error("Error uploading file:", error);
-                    res.redirect("/"+threadNo+"?uploadFailure=true");
+                    // res.redirect("/"+threadNo+"?uploadFailure=true");
                 }
+                else
+                {
+                //AARON TEMP COMMENT vv
                 fileName = req.file.filename;
+                console.log("Aaron print file:", req.file);
+                //AARON TEMP REDIRECT to prevent posting while testing!!!
+                // res.redirect("/"+threadNo+"?uploadFailure=true");
+                }
             });
-            newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
+            // newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
+            console.log('fileName:',fileName);
+            newPost.img = `uploads/${fileName}`;
         }
 
         let postNo = await PostNo.findOne({});
