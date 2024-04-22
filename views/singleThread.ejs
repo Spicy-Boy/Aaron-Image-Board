@@ -17,7 +17,12 @@
 
             <!-- container for the CREATE NEW POST form -->
             <div class="flex-centered">
-                <form id="submission-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" method="post">
+                <%if (uploadFailure) {%>
+                <h2 style="color: red">
+                    SORRY, FAILED TO UPLOAD FILE
+                </h2>
+                <%}%>
+                <form id="submission-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <label for="username">Name</label>
                         <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
@@ -34,17 +39,18 @@
                         <label for="file">Image File</label>
                         <input id="file" name="file" type="file">
                     </div>
-                    
-                    <br>
-                    <input type="checkbox" id="imgCheckbox" name="imgCheckbox">
-                    Use image url
-                    <br>
-
                     <div class="form-group" id="urlSubmission">
                         <label for="img">Img URL</label>
                         <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
                     </div>
 
+                    <div>
+                        <br>
+                        <input type="checkbox" id="imgCheckbox" name="imgCheckbox">
+                        (use img url instead)
+                        <br>
+                    </div>
+                    
                     <br>
                     <input type="submit" value="Post Reply">
                 </form>
@@ -106,6 +112,29 @@
     <%- include("./partials/footer") %>
 
     <script src="js/createReplyLinks.js"></script>
+
+    <!-- vv script for switching between img upload types -->
+    <script>
+        const imgCheckbox = document.getElementById('imgCheckbox');
+        const imgUrlInputGroup = document.getElementById('urlSubmission');
+        const imgFileInputGroup = document.getElementById('fileSubmission');
+        const fileInput = document.getElementById('file');
+        imgCheckbox.addEventListener("change", (event)=>{
+            if (event.target.checked) 
+            {
+                console.log('Checkbox checked');
+                fileInput.value = "";
+                imgFileInputGroup.style.display = "none";
+                imgUrlInputGroup.style.display = "inline";
+            }
+            else 
+            {
+                console.log('Checkbox unchecked');
+                imgFileInputGroup.style.display = "inline";
+                imgUrlInputGroup.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 

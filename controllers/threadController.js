@@ -88,25 +88,18 @@ async function createOneThread(req, res)
 async function createPostInThread (req, res)
 {
     try{
-
-        let uploadedImgUrl = "";
-
-        
-
-        let postNo = await PostNo.findOne({});
-        //TESTER vvv
-        postNo.number++;
-        console.log('postNo', postNo.number);
-        await postNo.save();
-
+                
+        //get thre thread
         let targetThread = await Thread.findOne({threadNo: req.params.threadNo});
+        let threadNo = +req.params.threadNo;
 
+        //initialize a new post object
         let newPost = {
             username: req.body.username,
             textContent: req.body.content,
             //img is temporarily a url, no uploading images from pc
             img: "",
-            postNo: postNo.number
+            postNo: 0
         }
 
         if (req.body.imgCheckbox === 'on')
@@ -114,16 +107,32 @@ async function createPostInThread (req, res)
             newPost.img = req.body.img;
         }
         else {
-            newPost.img = uploadedImgUrl;
+            let fileName = "";
+            upload.single('uploaded_file')(req, res, (error) => { 
+                if (error)
+                {
+                    console.error("Error uploading file:", error);
+                    res.redirect("/"+threadNo+"?uploadFailure=true");
+                }
+                fileName = req.file.filename;
+            });
+            newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
         }
 
-        targetThread.posts.push(newPost);
+        let postNo = await PostNo.findOne({});
+        postNo.number++;
+        //TESTER vvv
+        // console.log('postNo', postNo.number);
+        newPost.postNo = postNo.number;
+        await postNo.save();
 
+        //add new post to thread
+        targetThread.posts.push(newPost);
+        //save thread with new post to DB
         await targetThread.save();
 
-        // vvv return to home page
-        res.redirect("/"+req.params.threadNo);
-
+        // vvv return to the thread
+        res.redirect("/"+threadNo);
 
     } catch (error) {
         let errorObj = {

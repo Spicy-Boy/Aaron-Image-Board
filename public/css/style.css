@@ -40,6 +40,12 @@ body {
 #img-url-bar {
     width: 200px;
 }
+#urlSubmission {
+    display: none;
+}
+#imgCheckbox {
+    font-size: 10px;
+}
 
 /* navigation buttons like top, bottom, sort */
 .options {
