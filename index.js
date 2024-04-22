@@ -54,8 +54,8 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
-const uploadRouter = require("./routes/uploadRouter");
-app.use("/api/upload", uploadRouter);
+// const uploadRouter = require("./routes/uploadRouter");
+// app.use("/api/upload", uploadRouter);
 
 //Turn on the app
 const PORT = 8080;

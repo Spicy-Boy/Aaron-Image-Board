@@ -89,6 +89,10 @@ async function createPostInThread (req, res)
 {
     try{
 
+        let uploadedImgUrl = "";
+
+        
+
         let postNo = await PostNo.findOne({});
         //TESTER vvv
         postNo.number++;
@@ -101,8 +105,16 @@ async function createPostInThread (req, res)
             username: req.body.username,
             textContent: req.body.content,
             //img is temporarily a url, no uploading images from pc
-            img: req.body.img,
+            img: "",
             postNo: postNo.number
+        }
+
+        if (req.body.imgCheckbox === 'on')
+        {
+            newPost.img = req.body.img;
+        }
+        else {
+            newPost.img = uploadedImgUrl;
         }
 
         targetThread.posts.push(newPost);
