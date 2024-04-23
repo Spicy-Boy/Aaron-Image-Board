@@ -6,7 +6,8 @@ const {
     renderRegisterNewUserPage,
     renderLoginPage,
     logoutUser,
-    renderUserPortal
+    renderUserPortal,
+    renderFileNotFoundPage
 } = require("../controllers/viewController");
 
 const {
@@ -27,5 +28,7 @@ router.get("/user-portal", requireAuth, renderUserPortal)
 
 //DYNAMIC PARAMETERS MUST COME AFTER ALL NON DYNAMIC!!
 router.get("/thread/:threadNo", isLoggedIn, renderSingleThreadPage);
+
+router.get("*", isLoggedIn, renderFileNotFoundPage);
 
 module.exports = router;

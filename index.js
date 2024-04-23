@@ -44,7 +44,7 @@ app.use(session(
     }
 ));
 
-//ROUTES!
+/* ~ R O U T E S ~ */
 const viewRouter = require("./routes/viewRouter");
 app.use("/", viewRouter);
 
@@ -54,6 +54,11 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
+//WILDCARD! disabled
+// const wildecardRouter = require("./routes/wildcardRouter");
+// app.use("*", wildcardRouter);
+
+//upload route, CANNED for now
 // const uploadRouter = require("./routes/uploadRouter");
 // app.use("/api/upload", uploadRouter);
 

@@ -98,6 +98,7 @@ async function renderLoginPage (req, res)
 async function logoutUser(req, res) 
 {
     try{
+        //literally destrou the session
         req.session.destroy(err => {
             if (err) 
             {
@@ -114,7 +115,7 @@ async function logoutUser(req, res)
         });
     } catch (error) {
         let errorObj = {
-            message: "renderNewUserPage failed",
+            message: "logoutUser failed",
             payload: error
         }
         console.log(errorObj);
@@ -124,7 +125,30 @@ async function logoutUser(req, res)
 
 async function renderUserPortal(req, res)
 {
+    try{
+        res.render("userPortal", {activeUser: req.session.activeUser});
+    } catch (error) {
+        let errorObj = {
+            message: "renderUserPortal failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
+}
 
+async function renderFileNotFoundPage(req, res)
+{
+    try{
+        res.render("fileNotFound", {activeUser: req.session.activeUser});
+    } catch (error) {
+        let errorObj = {
+            message: "renderFileNotFoundPage failed",
+            payload: error
+        }
+        console.log(errorObj);
+        res.json(errorObj);
+    }
 }
 
 module.exports = {
@@ -133,5 +157,6 @@ module.exports = {
     renderRegisterNewUserPage,
     renderLoginPage,
     logoutUser,
-    renderUserPortal
+    renderUserPortal,
+    renderFileNotFoundPage,
 };

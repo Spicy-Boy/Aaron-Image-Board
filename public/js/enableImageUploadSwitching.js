@@ -1,5 +1,7 @@
 // vv script for switching between img upload types
 
+//there is a checkbox that allows users to change the image upload option from a browse.. to a text entry for a direct image url
+
 const imgCheckbox = document.getElementById('imgCheckbox');
 const imgUrlInputGroup = document.getElementById('urlSubmission');
 const imgFileInputGroup = document.getElementById('fileSubmission');
