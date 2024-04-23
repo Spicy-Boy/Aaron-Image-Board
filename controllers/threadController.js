@@ -90,11 +90,18 @@ async function createOneThread(req, res)
 
 async function createPostInThread (req, res)
 {
+    /* ejs from singleThread.ejs
+        <%if (uploadFailure) {%>
+        <h2 style="color: red">
+            SORRY, FAILED TO UPLOAD FILE
+        </h2>
+        <%}%>
+    */
     try{
                 
         //get the thread
         let targetThread = await Thread.findOne({threadNo: req.params.threadNo});
-        let threadNo = +req.params.threadNo;
+        let threadNo = req.params.threadNo;
 
         //initialize a new post object
         let newPost = {
@@ -110,25 +117,27 @@ async function createPostInThread (req, res)
             newPost.img = req.body.img;
         }
         else {
-            let fileName = "";
-            upload.single('file')(req, res, (error) => { 
-                if (error)
-                {
-                    console.error("Error uploading file:", error);
-                    // res.redirect("/"+threadNo+"?uploadFailure=true");
-                }
-                else
-                {
-                //AARON TEMP COMMENT vv
-                fileName = req.file.filename;
-                console.log("Aaron print file:", req.file);
-                //AARON TEMP REDIRECT to prevent posting while testing!!!
-                // res.redirect("/"+threadNo+"?uploadFailure=true");
-                }
-            });
-            // newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
-            console.log('fileName:',fileName);
-            newPost.img = `uploads/${fileName}`;
+            newPost.img = `uploads/${req.file.filename}`;
+            // newPost.img = `uploads/${threadNo}/${req.file.filename}`;
+
+            // upload.single('file')(req, res, (error) => { 
+            //     if (error)
+            //     {
+            //         console.error("Error uploading file:", error);
+            //         // res.redirect("/"+threadNo+"?uploadFailure=true");
+            //     }
+            //     else
+            //     {
+            //     //AARON TEMP COMMENT vv
+            //     fileName = req.file.filename;
+            //     console.log("Aaron print file:", req.file);
+            //     //AARON TEMP REDIRECT to prevent posting while testing!!!
+            //     // res.redirect("/"+threadNo+"?uploadFailure=true");
+            //     }
+            // });
+            // // newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
+            // console.log('fileName:', fileName);
+            // newPost.img = `uploads/${fileName}`;
         }
 
         let postNo = await PostNo.findOne({});

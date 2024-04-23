@@ -17,11 +17,7 @@
 
             <!-- container for the CREATE NEW POST form -->
             <div class="flex-centered">
-                <%if (uploadFailure) {%>
-                <h2 style="color: red">
-                    SORRY, FAILED TO UPLOAD FILE
-                </h2>
-                <%}%>
+
                 <form id="submission-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <label for="username">Name</label>
