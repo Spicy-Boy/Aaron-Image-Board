@@ -117,7 +117,7 @@ async function createPostInThread (req, res)
             newPost.img = req.body.img;
         }
         else {
-            newPost.img = `uploads/${req.file.filename}`;
+            newPost.img = `uploads/${threadNo}/${req.file.filename}`;
             // newPost.img = `uploads/${threadNo}/${req.file.filename}`;
 
             // upload.single('file')(req, res, (error) => { 
