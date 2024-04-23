@@ -8,7 +8,7 @@
         <%- include("./partials/top-nav") %>
 
         <div class="banner">
-            <img src="images/kirby-eat.gif">
+            <img src="/images/kirby-eat.gif">
             <h2>WELCOME TO AARON'S MAGIC IMAGEBOARD!</h2>
             
             <% if (activeUser) {%>
@@ -51,7 +51,7 @@
         </div>
         <hr>
 
-        <%- include("./partials/options-nav") %>
+        <%- include("./partials/options-nav-catalog") %>
 
         <!-- SORT THREADS by most recent post to start! -->
         <% threads.sort( (a,b) => {
@@ -62,7 +62,7 @@
 
             <%threads.forEach( (thread) => {%>
                 <div class="thread-post" data-threadNo="<%=thread.threadNo%>" data-numberOfPosts="<%=thread.posts.length%>" data-dateOfMostRecentPost="<%=thread.posts[thread.posts.length-1].createdAt.getTime()%>">
-                    <a href="/<%=thread.threadNo%>">
+                    <a href="thread/<%=thread.threadNo%>">
                         <img src="<%=thread.posts[0].img%>">
                     </a>
                     <div class="thread-information">
@@ -97,6 +97,6 @@
 
     <%- include("./partials/footer") %>
 
-    <script src="js/sortThreadsInCatalog.js"></script>
+    <script src="/js/sortThreadsInCatalog.js"></script>
 
 </body>

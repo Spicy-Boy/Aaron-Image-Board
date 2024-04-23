@@ -71,7 +71,7 @@ async function createOneThread(req, res)
         console.log('Thread created successfully!');
 
         // vvv return to home page
-        res.redirect("/"+threadNo.number);
+        res.redirect("/thread/"+threadNo.number);
 
         // res.json({
         //     message: "SUCCESS!",
@@ -101,7 +101,7 @@ async function createPostInThread (req, res)
                 
         //get the thread
         let targetThread = await Thread.findOne({threadNo: req.params.threadNo});
-        let threadNo = req.params.threadNo;
+        // let threadNo = req.params.threadNo;
 
         //initialize a new post object
         let newPost = {
@@ -116,8 +116,12 @@ async function createPostInThread (req, res)
         {
             newPost.img = req.body.img;
         }
+        else if (!req.file)
+        {
+            newPost.img = ""; //leave it blank if no url or file attached to post
+        }
         else {
-            newPost.img = `uploads/${threadNo}/${req.file.filename}`;
+            newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
             // newPost.img = `uploads/${threadNo}/${req.file.filename}`;
 
             // upload.single('file')(req, res, (error) => { 
@@ -153,7 +157,7 @@ async function createPostInThread (req, res)
         await targetThread.save();
 
         // vvv return to the thread
-        res.redirect("/"+threadNo);
+        res.redirect("/thread/"+req.params.threadNo);
 
     } catch (error) {
         let errorObj = {

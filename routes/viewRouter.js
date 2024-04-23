@@ -15,6 +15,7 @@ const {
 } = require("./authMiddleware");
 
 router.get("/", isLoggedIn, renderCatalogPage);
+router.get("/catalog", isLoggedIn, renderCatalogPage);
 
 router.get("/register", isLoggedIn, renderRegisterNewUserPage);
 
@@ -25,6 +26,6 @@ router.get("/logout", logoutUser);
 router.get("/user-portal", requireAuth, renderUserPortal)
 
 //DYNAMIC PARAMETERS MUST COME AFTER ALL NON DYNAMIC!!
-router.get("/:threadNo", isLoggedIn, renderSingleThreadPage);
+router.get("/thread/:threadNo", isLoggedIn, renderSingleThreadPage);
 
 module.exports = router;
