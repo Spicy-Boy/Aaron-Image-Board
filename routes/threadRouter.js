@@ -9,7 +9,7 @@ const {
 } = require("../controllers/threadController");
 
 router.get("/getThread", getAllThreads);
-router.post("/createThread", createOneThread);
+router.post("/createThread", upload.single('file'), createOneThread);
 router.post("/createPostInThread/:threadNo", upload.single('file'), createPostInThread);
 
 module.exports = router;

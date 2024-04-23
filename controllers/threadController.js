@@ -33,40 +33,51 @@ async function createOneThread(req, res)
 {
     try{
 
+        const firstPost = {
+            username: req.body.username,
+            textContent: req.body.content,
+            //img is temporarily a url, no uploading images from pc
+            //UPDATE !!! Yes I added image uploading!!
+            img: "",
+            postNo: 0
+        }
+
+        if (req.body.imgCheckbox === 'on')
+        {
+            firstPost.img = req.body.img;
+        }
+        else if (req.file)
+        {
+            firstPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+        }
+        else 
+        {
+            firstPost.img = ""; //leave it blank if no url or file attached to post
+        }
+        
         let postNo = await PostNo.findOne({});
         //TESTER vvv
         postNo.number++;
         console.log('postNo', postNo.number);
-        await postNo.save();
+        firstPost.postNo = postNo.number;
 
-        
         let threadNo = await ThreadNo.findOne({});
         //TESTER vvv
         threadNo.number++;
         console.log('threadNo', threadNo.number);
-        await threadNo.save();
-
-        const firstPostData = {
-            username: req.body.username,
-            textContent: req.body.content,
-            //img is temporarily a url, no uploading images from pc
-            img: req.body.img,
-            postNo: postNo.number
-        }
 
         const threadData = {
             title: req.body.title,
             author: req.body.username,
             // add the post's objectid as the first post in the thread's array vv
-            posts: [firstPostData],
+            posts: [firstPost],
             threadNo: threadNo.number,
             lastCommentAt: Date.now()
         }
-        
-        const newThread = await Thread.create(threadData);
 
-        // postNo.number++;
-        // await postNo.save();
+        const newThread = await Thread.create(threadData);
+        await postNo.save();
+        await threadNo.save();
 
         console.log('Thread created successfully!');
 
@@ -116,32 +127,13 @@ async function createPostInThread (req, res)
         {
             newPost.img = req.body.img;
         }
-        else if (!req.file)
+        else if (req.file)
+        {
+            newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+        }
+        else 
         {
             newPost.img = ""; //leave it blank if no url or file attached to post
-        }
-        else {
-            newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
-            // newPost.img = `uploads/${threadNo}/${req.file.filename}`;
-
-            // upload.single('file')(req, res, (error) => { 
-            //     if (error)
-            //     {
-            //         console.error("Error uploading file:", error);
-            //         // res.redirect("/"+threadNo+"?uploadFailure=true");
-            //     }
-            //     else
-            //     {
-            //     //AARON TEMP COMMENT vv
-            //     fileName = req.file.filename;
-            //     console.log("Aaron print file:", req.file);
-            //     //AARON TEMP REDIRECT to prevent posting while testing!!!
-            //     // res.redirect("/"+threadNo+"?uploadFailure=true");
-            //     }
-            // });
-            // // newPost.img = `uploads/${req.params.threadNo}/${fileName}`;
-            // console.log('fileName:', fileName);
-            // newPost.img = `uploads/${fileName}`;
         }
 
         let postNo = await PostNo.findOne({});
@@ -149,12 +141,12 @@ async function createPostInThread (req, res)
         //TESTER vvv
         // console.log('postNo', postNo.number);
         newPost.postNo = postNo.number;
-        await postNo.save();
 
         //add new post to thread
         targetThread.posts.push(newPost);
         //save thread with new post to DB
         await targetThread.save();
+        await postNo.save();
 
         // vvv return to the thread
         res.redirect("/thread/"+req.params.threadNo);

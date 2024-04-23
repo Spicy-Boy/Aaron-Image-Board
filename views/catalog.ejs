@@ -23,7 +23,7 @@
         <div class="new-thread">
 
             <div class="flex-centered">
-                <form action="/api/threads/createThread" method="post">
+                <form action="/api/threads/createThread" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <label for="username">Name</label>
                         <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
@@ -40,10 +40,23 @@
                     </div>
                 
                     <br>
-                    <div class="form-group">
+
+                    <div class="form-group" id="fileSubmission">
+                        <label for="file">Image File</label>
+                        <input id="file" name="file" type="file">
+                    </div>
+                    <div class="form-group" id="urlSubmission">
                         <label for="img">Img URL</label>
                         <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
                     </div>
+
+                    <div>
+                        <br>
+                        <input type="checkbox" id="imgCheckbox" name="imgCheckbox">
+                        (use img url instead)
+                        <br>
+                    </div>
+
                     <br>
                     <input type="submit" value="Post Thread">
                 </form>
@@ -97,6 +110,9 @@
 
     <%- include("./partials/footer") %>
 
+    <!-- observe below that public/js/sortThreadsInCatalog.js is implied -->
     <script src="/js/sortThreadsInCatalog.js"></script>
+
+    <script src="/js/enableImageUploadSwitching.js"></script>
 
 </body>
