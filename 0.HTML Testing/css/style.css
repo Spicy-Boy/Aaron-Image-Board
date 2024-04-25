@@ -152,17 +152,6 @@ they link to a thread from catalog vvv */
     padding: 5px;
     border-bottom: 1px solid #b7c5d9;
 }
-/* vvv posts that ARE the original post! */
-.post-OP {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    padding: 5px;
-}
-.post-thumbnail-OP {
-    float: left;
-    max-width: 250px;
-    max-height: 250px;
-}
 
 /* for referenced posts vv */
 .popup {
