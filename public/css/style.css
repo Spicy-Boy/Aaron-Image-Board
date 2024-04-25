@@ -129,8 +129,9 @@ they link to a thread from catalog vvv */
 /*  0)_(0  **licks you** */
 /* POSTS in THREADS! */
 .thread {
-    display: flex;
-    flex-direction: column;
+    /* AARON TEMPORARILY DISABLED */
+    /* display: flex;
+    flex-direction: column; */
 }
 .post-container {
     display: flex;
@@ -153,6 +154,9 @@ they link to a thread from catalog vvv */
     border-bottom: 1px solid #b7c5d9;
 }
 /* vvv posts that ARE the original post! */
+.post-container-OP {
+
+}
 .post-OP {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -162,6 +166,7 @@ they link to a thread from catalog vvv */
     float: left;
     max-width: 250px;
     max-height: 250px;
+    margin-right: 15px;
 }
 
 /* for referenced posts vv */
