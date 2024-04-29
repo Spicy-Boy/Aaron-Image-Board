@@ -35,26 +35,38 @@ async function createOneThread(req, res)
 {
     try{
 
-        const firstPost = {
+        //initialize a new post object
+        let newPost = {
             username: req.body.username,
             textContent: req.body.content,
             //img is temporarily a url, no uploading images from pc
-            //UPDATE !!! Yes I added image uploading!!
             img: "",
             postNo: 0
         }
 
         if (req.body.imgCheckbox === 'on')
         {
-            firstPost.img = req.body.img;
+            newPost.img = req.body.img;
         }
         else if (req.file)
         {
-            firstPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+            newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+            newPost.imgSize = Math.floor(((req.file.size / 1024) * 100) /100);
+            newPost.imgFileType = req.file.mimetype;
+
+            try {
+                const imgMetadata = await sharp(req.file.path).metadata();
+                newPost.imgWidth = imgMetadata.width;
+                newPost.imgHeight = imgMetadata.height;
+            } catch (error)
+            {
+                console.error("Error processing image metadata:",error);
+                return res.status(500).send("Error processing image");
+            }
         }
         else 
         {
-            firstPost.img = ""; //leave it blank if no url or file attached to post
+            newPost.img = ""; //leave it blank if no url or file attached to post
         }
         
         let postNo = await PostNo.findOne({});

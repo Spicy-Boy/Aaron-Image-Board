@@ -57,11 +57,15 @@
 
         <div class="thread">
 
-            <%thread.posts.forEach( (post) => { %>    
-                <div class="post-container">
-                    <div class="reply-arrows">>></div>
-                    <div class="post-reply" id="<%=post.postNo%>">
-
+            <%thread.posts.forEach( (post, index) => { %>
+                <%if (index == 0) {%>
+                    <div class="post-container-OP">
+                        <div class="post-OP" id="<%=post.postNo%>">
+                <%} else {%>
+                    <div class="post-container">
+                        <div class="reply-arrows">>></div>
+                        <div class="post-reply" id="<%=post.postNo%>">
+                <%}%>
                         <div class="post-user-information">
                             <span class="username"><%=post.username%></span>
                             <!-- <span class="date">04/08/24(Mon)</span> -->
@@ -81,16 +85,24 @@
                                     <%
                                         // vv regex to remove most of url from link
                                         let fileName = post.img.replace(/.*\//, '');
+                                        // vvv limits the length of file name if too large
                                         if (fileName.length > 40)
                                         {
                                             fileName = fileName.substring(fileName.length-39);
                                         }
                                     %>
-                                    <%=fileName%>
-                                </a></span><span> (??? KB, WidthxHeight)    
+                                    <%=fileName%></a></span>
+                                    <!-- below, ternaries check if the values for imgSize and dimensions exist in the post and then prints conditionally -->
+                                (<%=(post.imgSize) ? post.imgSize : "???"%> KB, <%=(post.imgWidth) ? post.imgWidth : "???"%>x<%=(post.imgHeight) ? post.imgHeight : "???"%>)  
+                                    <!-- in the case of url-based images, such information is not stored... should I perhaps do that? I can with sharp! -->
                             </div>
-
-                            <img src="<%=post.img%>" class="post-thumbnail">
+                            <%if (post.imgSize) {%>
+                                <a href="#" class="image-enlargement" data-img-width="<%=post.imgWidth%>" data-img-height="<%=post.imgHeight%>">
+                            <%}%>
+                            <img src="<%=post.img%>" class=<%=(index == 0) ? "post-thumbnail-OP" : "post-thumbnail"%>>
+                            <%if (post.imgSize) {%>
+                                </a>
+                            <%}%>
                         <%}%>
                         <blockquote class="post-message preserve-whitespace"><%=post.textContent%></blockquote>
                         <!-- <div class="post-user-information">
@@ -110,6 +122,8 @@
     <script src="/js/createReplyLinks.js"></script>
 
     <script src="/js/enableImageUploadSwitching.js"></script>
+
+    <script src="/js/enlargeImage.js"></script>
 
 </body>
 
