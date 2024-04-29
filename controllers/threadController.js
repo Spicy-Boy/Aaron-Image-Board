@@ -21,12 +21,9 @@ async function getAllThreads(req, res)
         });
 
     } catch (error) {
-        let errorObj = {
-            message: "getAllThreads failed",
-            payload: error
-        }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error("getAllThreads failed:",error);
+
+        return res.send("ERROR getting the threads! Please try again later..");
     }
 }
 
@@ -102,14 +99,10 @@ async function createOneThread(req, res)
         //     message: "SUCCESS!",
         //     payload: results
         // });
-
     } catch (error) {
-        let errorObj = {
-            message: "createOneThread failed",
-            payload: error
-        }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error("createOneThread failed:",error);
+
+        return res.send("ERROR creating a thread! Please try again later..");
     }
 }
 
