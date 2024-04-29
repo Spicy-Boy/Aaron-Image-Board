@@ -4,6 +4,8 @@ const Thread = require("../models/threadModel");
 const PostNo = require("../models/postNoModel");
 const ThreadNo = require("../models/threadNoModel");
 
+const sharp = require('sharp');
+
 //vv required to upload files to proper location
 const upload = require("../middlewares/multer");
 
@@ -131,7 +133,17 @@ async function createPostInThread (req, res)
         {
             newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
             newPost.imgSize = Math.floor(((req.file.size / 1024) * 100) /100);
-            newPost.imgFileType = mimetype;
+            newPost.imgFileType = req.file.mimetype;
+
+            try {
+                const imgMetadata = await sharp(req.file.path).metadata();
+                newPost.imgWidth = imgMetadata.width;
+                newPost.imgHeight = imgMetadata.height;
+            } catch (error)
+            {
+                console.error("Error processing image metadata:",error);
+                return res.status(500).send("Error processing image");
+            }
         }
         else 
         {
@@ -157,12 +169,9 @@ async function createPostInThread (req, res)
         // res.send(req.file);
 
     } catch (error) {
-        let errorObj = {
-            message: "createPostInThread failed",
-            payload: error
-        }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error("createPostInThread failed:",error);
+
+        return res.send("ERROR creating a post! Please try again later..");
     }
 }
 
