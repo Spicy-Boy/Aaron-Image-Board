@@ -15,6 +15,7 @@ const threadSchema = new mongoose.Schema({
         imgSize: Number,
         imgWidth: Number,
         imgHeight: Number,
+        imgFileType: String,
         postNo: {
             type: Number, //post number assinged to this comment
             default: -1 

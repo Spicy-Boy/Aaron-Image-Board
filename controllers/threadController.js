@@ -130,6 +130,8 @@ async function createPostInThread (req, res)
         else if (req.file)
         {
             newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+            newPost.imgSize = Math.floor(((req.file.size / 1024) * 100) /100);
+            newPost.imgFileType = mimetype;
         }
         else 
         {
@@ -150,6 +152,9 @@ async function createPostInThread (req, res)
 
         // vvv return to the thread
         res.redirect("/thread/"+req.params.threadNo);
+
+        //tester vv
+        // res.send(req.file);
 
     } catch (error) {
         let errorObj = {

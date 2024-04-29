@@ -133,17 +133,20 @@ they link to a thread from catalog vvv */
     display: flex;
     flex-direction: column;
 }
-.post-container {
-    display: flex;
-    flex-direction: row;
-}
-
+/* THREAD ^^ ^^ */
 .reply-arrows {
     color: #9a9da8;
     margin-right: 2px;
     margin-left: 2px;
     padding-top: 6px;
 }
+
+.post-container {
+    display: flex;
+    flex-direction: row;
+    /* min-width: 200px; */
+}
+
 
 /* vvv posts that aren't the OP (first post) */
 .post-reply {
@@ -155,7 +158,7 @@ they link to a thread from catalog vvv */
 }
 /* vvv posts that ARE the original post! */
 .post-container-OP {
-
+    /* min-width: 100px; */
 }
 .post-OP {
     margin-top: 2px;
