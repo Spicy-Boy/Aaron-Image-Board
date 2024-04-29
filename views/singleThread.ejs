@@ -60,11 +60,11 @@
             <%thread.posts.forEach( (post, index) => { %>
                 <%if (index == 0) {%>
                     <div class="post-container-OP">
-                        <div class="post-OP" id="<%=post.postNo%>">
+                        <div class="post-OP post" id="<%=post.postNo%>">
                 <%} else {%>
                     <div class="post-container">
                         <div class="reply-arrows">>></div>
-                        <div class="post-reply" id="<%=post.postNo%>">
+                        <div class="post-reply post" id="<%=post.postNo%>">
                 <%}%>
                         <div class="post-user-information">
                             <span class="username"><%=post.username%></span>
