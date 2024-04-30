@@ -7,7 +7,16 @@ const fs = require("fs");
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>
     {
-        let filePath = `public/uploads/${req.params.threadNo}`;
+        let filePath;
+        if (req.params.threadNo)
+        {
+            filePath = `public/uploads/${req.params.threadNo}`;
+        }
+        else 
+        {
+            filePath = `public/uploads/OP-images`;
+        }
+
 
         if (!fs.existsSync(filePath))
         {
@@ -29,24 +38,38 @@ const limits = {
     fileSize: 5 * 1024 * 1024
 };
 
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+// const fileFilter = (req, file, cb) => {
+//     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
 
-    if (allowedTypes.includes(file.mimetype)) 
-    {
-        //not sure about this callback stuff lmao
-        cb(null, true); //accepts file
-    } 
-    else 
-    {
-        cb(new Error('SORRY! Uploaded file is not an image..'), false); //rejection
-    }
-}
+//     if (allowedTypes.includes(file.mimetype)) 
+//     {
+//         //not sure about this callback stuff lmao
+//         cb(null, true); //accepts file
+//     } 
+//     else 
+//     {
+//         cb('SORRY! Are you sure uploaded file is an image?..', false); //rejection
+//     }
+// }
 
 const upload = multer({
     storage: storage,
     limits: limits,
-    // fileFilter: fileFilter
+    fileFilter: (req, file, cb) => {
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+    
+        if (allowedTypes.includes(file.mimetype)) 
+        {
+            //not sure about this callback stuff lmao
+            cb(null, true); //accepts file
+        } 
+        else 
+        {
+            const error = new Error('SORRY! Are you sure the uploaded file is an image?');
+            error.code = 'LIMIT_FILE_TYPE'; // Custom error code
+            cb(error, false); // Rejects the file
+        }
+    }
 });
 
 // const uploadFileForPost = upload.single("file");
@@ -70,6 +93,8 @@ const upload = multer({
 //     });
 
 // }
+
+//TLDR, Aaron, you need to learn error handling and apply it consistently across the site
 
 module.exports = upload;
     // uploadFileForPost
