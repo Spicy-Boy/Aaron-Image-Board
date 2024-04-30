@@ -130,6 +130,7 @@ they link to a thread from catalog vvv */
 /* POSTS in THREADS! */
 .thread {
     /* thread flex is disabled in media query for desktop */
+    min-height: 300px;
     display: flex;
     flex-direction: column;
 }

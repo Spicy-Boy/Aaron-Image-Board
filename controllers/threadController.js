@@ -58,7 +58,7 @@ async function createOneThread(req, res)
             } catch (error)
             {
                 console.error("Error processing image metadata:",error);
-                return res.status(500).send("Error processing image");
+                return res.status(500).send("Error processing image.. is it an accepted file type?");
             }
         }
         else 
@@ -70,7 +70,7 @@ async function createOneThread(req, res)
         //TESTER vvv
         postNo.number++;
         console.log('postNo', postNo.number);
-        firstPost.postNo = postNo.number;
+        newPost.postNo = postNo.number;
 
         let threadNo = await ThreadNo.findOne({});
         //TESTER vvv
@@ -81,7 +81,7 @@ async function createOneThread(req, res)
             title: req.body.title,
             author: req.body.username,
             // add the post's objectid as the first post in the thread's array vv
-            posts: [firstPost],
+            posts: [newPost],
             threadNo: threadNo.number,
             lastCommentAt: Date.now()
         }
