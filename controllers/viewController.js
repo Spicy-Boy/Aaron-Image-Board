@@ -57,11 +57,12 @@ async function renderRegisterNewUserPage (req, res)
         res.render("registerNewUser", {activeUser: req.session.activeUser});
     } catch (error) {
         let errorObj = {
-            message: "renderNewUserPage failed",
+            message: "renderRegisterNewUserPage failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("Rendering the login page failed! Contact an admin for support..");
     }
 }
 
@@ -85,20 +86,19 @@ async function renderLoginPage (req, res)
         res.render("loginUser"/*, {activeUser: userInfo}*/, {activeUser: req.session.activeUser, loginMessage: req.session.loginMessage});
     } catch (error) {
         let errorObj = {
-
-            message: "renderLoginPage failed",
+            message: "loginUser failed",
             payload: error
-
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("Rendering the login page failed! Contact an admin for support..");
     }
 }
 
 async function logoutUser(req, res) 
 {
     try{
-        //literally destrou the session
+        //literally destroys the session
         req.session.destroy(err => {
             if (err) 
             {
@@ -118,8 +118,9 @@ async function logoutUser(req, res)
             message: "logoutUser failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("Logging out failed!");
     }
 }
 
@@ -132,8 +133,9 @@ async function renderUserPortal(req, res)
             message: "renderUserPortal failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("Rendering the user portal failed! Contact an admin for support..");
     }
 }
 
@@ -143,11 +145,27 @@ async function renderFileNotFoundPage(req, res)
         res.render("fileNotFound", {activeUser: req.session.activeUser});
     } catch (error) {
         let errorObj = {
-            message: "renderFileNotFoundPage failed",
+            message: "renderUserPortal failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("THE FILE NOT FOUND PAGE FAILED TO LOAD.. how ironic");
+    }
+}
+
+async function renderErrorPage(req, res)
+{
+    try{
+        res.render("userPortal", {activeUser: req.session.activeUser, message: errorMessage});
+    } catch (error) {
+        let errorObj = {
+            message: "renderErrorPage failed",
+            payload: error
+        }
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("THE ERROR PAGE FAILED TO LOAD...! Oh my god!");
     }
 }
 
@@ -159,4 +177,5 @@ module.exports = {
     logoutUser,
     renderUserPortal,
     renderFileNotFoundPage,
+    renderErrorPage
 };

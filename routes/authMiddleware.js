@@ -31,13 +31,24 @@ async function isLoggedIn(req, res, next) {
     } catch (error) {
         let errorObj = {
             message: "isLoggedIn middleware failed",
-            payload: "hi :)"
+            payload: error
         }
 
         console.log(errorObj);
-        res.json(errorObj);
+        res.send("Authorization for login failed! Try again later or contact admin..");
     }
+}
 
+async function isUserAdmin(req, res, next)
+{
+    if (req.session && req.session.adminId) 
+    {
+        req.session.activeUser = await User.findOne({_id: req.session.adminId});
+        // vv changes the password into an empty string just in case
+        req.session.activeUser.password = "";
+
+        return next();
+    }
 }
 
 module.exports = {

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Image Board</title>
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+</head>
+<body>
+    <div class="wrapper-main">
+        <div id="top" class="options">
+
+            <ul>
+                <li>
+                    [<a href="/">Home</a>]
+                </li>
+            </ul>
+        
+            <ul class="right-justify">
+                <li>
+                    Hello <a href="/userPortal"><span class="greeting-username">[USERNAME]</span></a>&nbsp;
+                </li>
+
+                <li>
+                    &nbsp;
+                    [<a href="/logout">Logout</a>]
+                </li>
+
+            </ul>
+        
+        </div>
+        <br>
+
+        <div class="banner">
+            <img src="images/kirby-eat.gif">
+            <h2>THREAD: [THREAD TITLE]</h2>
+
+        </div>
+        
+        <hr>
+
+            <!-- container for the CREATE NEW POST form -->
+            <div class="flex-centered">
+
+                <form id="submission-form" action="PLACEHOLDER :D" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="content">Comment</label>
+                        <textarea id="content" name="content" rows="4" cols="50"></textarea>
+                    </div>
+                
+                    <br>
+
+                    <div class="form-group" id="fileSubmission">
+                        <label for="file">Image File</label>
+                        <input id="file" name="file" type="file">
+                    </div>
+                    <div class="form-group" id="urlSubmission">
+                        <label for="img">Img URL</label>
+                        <input type="text" id="img-url-bar" name="img" placeholder="https://i.imgur.com/QFw4xCI.jpeg" value="https://i.imgur.com/QFw4xCI.jpeg">
+                    </div>
+
+                    <div>
+                        <br>
+                        <input type="checkbox" id="imgCheckbox" name="imgCheckbox">
+                        (use img url instead)
+                        <br>
+                    </div>
+                    
+                    <br>
+                    <input type="submit" value="Post Reply">
+                </form>
+            </div>
+        <hr>
+
+        <div class="options">
+
+            <ul>
+                <li>
+                    [<a href="/">Home</a>]
+                </li>
+                <li>
+                    [<a href="#bottom">Bottom</a>]
+                </li>
+            </ul>
+        
+        </div>
+        <hr>
+
+        <div class="thread"> 
+
+        <!-- FIRST POST vvv -->
+            <div class="post-container-OP">
+                <!-- IF OP, DON'T SHOW REPLY ARROWS -->
+                <div class="post-OP" id="2">
+
+                    <div class="post-user-information">
+                        <span class="username">Anonymous</span>
+                        <!-- <span class="date">04/08/24(Mon)</span> -->
+                        <span class="date"> January 23, 2024 (4:00 GMT)</span>
+                        <span class="postNo"> No.2</span>
+                        <!-- old position vv replies at top -->
+                        
+                    </div>
+                    <div class="post-user-information">
+                        <span class="literally-the-word-replies">Replies: </span>
+                        <span class="replies"></span>
+                    </div>
+
+                    <div class="post-img-header">
+                        File: <span><a href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" target="_blank">file.png
+                        </a></span><span> (??? KB, WidthxHeight)    
+                    </div>
+
+                    <a href="#" class="image-enlargement" data-img-width="800" data-img-height="533">
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" class="post-thumbnail-OP">
+                    </a>
+                    <blockquote class="post-message preserve-whitespace">:D HIIIII</blockquote>
+                    <!-- <div class="post-user-information">
+                        <span class="replies"></span>
+                    </div> -->
+                </div>
+            </div>
+            <!-- FIRST POST ^^^ -->
+
+            <div class="post-container">
+                <!-- IF OP, DON'T SHOW REPLY ARROWS -->
+                <div class="reply-arrows">>></div>
+                <div class="post-reply" id="2">
+
+                    <div class="post-user-information">
+                        <span class="username">Anonymous</span>
+                        <!-- <span class="date">04/08/24(Mon)</span> -->
+                        <span class="date"> January 23, 2024 (5:00 GMT)</span>
+                        <span class="postNo"> No.3</span>
+                        <!-- old position vv replies at top -->
+                        
+                    </div>
+                    <div class="post-user-information">
+                        <span class="literally-the-word-replies">Replies: </span>
+                        <span class="replies"></span>
+                    </div>
+
+                    <div class="post-img-header">
+                        File: <span><a href="./images/biggeranime.jpg" target="_blank">file.png
+                        </a></span><span> (??? KB, WidthxHeight)    
+                    </div>
+
+                    <a href="#" class="image-enlargement" data-img-width="1444" data-img-height="2272">
+                        <img src="./images/biggeranime.jpg" class="post-thumbnail">
+                    </a>
+                    <blockquote class="post-message preserve-whitespace">IM SO HUNGRY!!! Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</blockquote>
+                    <!-- <div class="post-user-information">
+                        <span class="replies"></span>
+                    </div> -->
+                </div>
+            </div>
+            <!-- ^^ second post -->
+
+            <div class="post-container">
+                <!-- IF OP, DON'T SHOW REPLY ARROWS -->
+                <div class="reply-arrows">>></div>
+                <div class="post-reply" id="2">
+
+                    <div class="post-user-information">
+                        <span class="username">Anonymous</span>
+                        <!-- <span class="date">04/08/24(Mon)</span> -->
+                        <span class="date"> January 23, 2024 (5:00 GMT)</span>
+                        <span class="postNo"> No.3</span>
+                        <!-- old position vv replies at top -->
+                        
+                    </div>
+                    <div class="post-user-information">
+                        <span class="literally-the-word-replies">Replies: </span>
+                        <span class="replies"></span>
+                    </div>
+
+                    <div class="post-img-header">
+                        File: <span><a href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" target="_blank">file.png
+                        </a></span><span> (??? KB, WidthxHeight)    
+                    </div>
+
+                    <a href="#" class="image-enlargement" data-img-width="800" data-img-height="533">
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" class="post-thumbnail">
+                    </a>
+                    <blockquote class="post-message preserve-whitespace">:D HIIIII</blockquote>
+                    <!-- <div class="post-user-information">
+                        <span class="replies"></span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="post-container">
+                <!-- IF OP, DON'T SHOW REPLY ARROWS -->
+                <div class="reply-arrows">>></div>
+                <div class="post-reply" id="2">
+
+                    <div class="post-user-information">
+                        <span class="username">Anonymous</span>
+                        <!-- <span class="date">04/08/24(Mon)</span> -->
+                        <span class="date"> January 23, 2024 (5:00 GMT)</span>
+                        <span class="postNo"> No.3</span>
+                        <!-- old position vv replies at top -->
+                        
+                    </div>
+                    <div class="post-user-information">
+                        <span class="literally-the-word-replies">Replies: </span>
+                        <span class="replies"></span>
+                    </div>
+
+                    <div class="post-img-header">
+                        File: <span><a href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" target="_blank">file.png
+                        </a></span><span> (??? KB, WidthxHeight)    
+                    </div>
+
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zNF9mbHVmZnlfY2h1YmJ5X3Bhc3RlbF9jYXRzX2thd2FpaV9hZXN0aGV0aWNfM182YTJkZjRmNS03NTZiLTQyODgtOWQ4Mi1lZmRlMmE1MTA2OWRfMS5qcGc.jpg" class="post-thumbnail">
+                    <blockquote class="post-message preserve-whitespace">:D HIIIII</blockquote>
+                    <!-- <div class="post-user-information">
+                        <span class="replies"></span>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="options">
+    
+        <ul>
+            <li>
+                [<a href="/">Home</a>]
+            </li>
+                    <li>
+                [<a href="#top">Top</a>]
+            </li>
+            
+        </ul>
+    </div>
+    <hr>
+
+    <footer id="bottom">
+
+        <br>
+        <center>Aaron 2024</center>
+    
+        <script>
+            let imgInput = document.getElementById('img-url-bar');
+    
+            imgInput.addEventListener('click', () => {
+                imgInput.value="";
+            })
+        </script>
+
+        <script src="./enlargeImage.js">
+
+        </script>
+    </footer>
+
+
+</body>
+</html>

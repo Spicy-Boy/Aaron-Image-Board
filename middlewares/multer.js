@@ -66,8 +66,8 @@ const upload = multer({
         else 
         {
             const error = new Error('SORRY! Are you sure the uploaded file is an image?');
-            error.code = 'LIMIT_FILE_TYPE'; // Custom error code
-            cb(error, false); // Rejects the file
+            error.code = 'LIMIT_FILE_TYPE';
+            cb(error, false); // Rejection
         }
     }
 });

@@ -7,7 +7,8 @@ const {
     renderLoginPage,
     logoutUser,
     renderUserPortal,
-    renderFileNotFoundPage
+    renderFileNotFoundPage,
+    renderErrorPage
 } = require("../controllers/viewController");
 
 const {
@@ -28,6 +29,8 @@ router.get("/user-portal", requireAuth, renderUserPortal)
 
 //DYNAMIC PARAMETERS MUST COME AFTER ALL NON DYNAMIC!!
 router.get("/thread/:threadNo", isLoggedIn, renderSingleThreadPage);
+
+router.get("/error", isLoggedIn, renderErrorPage);
 
 router.get("*", isLoggedIn, renderFileNotFoundPage);
 

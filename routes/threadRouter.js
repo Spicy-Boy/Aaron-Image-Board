@@ -14,6 +14,8 @@ const {
 router.get("/getThread", getAllThreads);
 
 router.post("/createThread", upload.single('file'), handleUploadErrors, createOneThread);
+
+/* attempt at error handling middleware for uploads vvv dont use!!! */
 // router.post("/createThread", upload.single('file')(req, res, (error) => {
 //     if (error instanceof multer.MulterError)
 //     {
@@ -25,7 +27,10 @@ router.post("/createThread", upload.single('file'), handleUploadErrors, createOn
 //     // Everything went fine, continue down the chain
 //     return next();
 // }), createOneThread);
+
 router.post("/createPostInThread/:threadNo", upload.single('file'), handleUploadErrors, createPostInThread);
+
+router.put("");
 
 function handleUploadErrors(error, req, res, next) {
     if (error instanceof multer.MulterError) 
