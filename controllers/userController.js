@@ -29,8 +29,8 @@ async function registerNewUser(req, res)
             message: "registerNewUser failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        res.send("Registration failed!");
     }
 }
 
