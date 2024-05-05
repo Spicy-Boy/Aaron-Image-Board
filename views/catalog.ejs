@@ -21,8 +21,12 @@
 
         <!-- container for the CREATE NEW THREAD form -->
         <div class="new-thread">
+            <div class="flex-centered" id="new-thread-placeholder">
+                <h2>[<a href="#">Create a New Thread</a>]</h2>
+            </div>
 
-            <div class="flex-centered">
+
+            <div class="flex-centered" id="new-thread-form">
                 <form action="/api/threads/createThread" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <label for="username">Name</label>
@@ -114,5 +118,10 @@
     <script src="/js/sortThreadsInCatalog.js"></script>
 
     <script src="/js/enableImageUploadSwitching.js"></script>
+
+    <!-- vv Script to show or hide new thread form -->
+    <script>
+
+    </script>
 
 </body>
