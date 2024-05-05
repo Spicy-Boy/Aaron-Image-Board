@@ -68,6 +68,13 @@ app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
+// OPEN vvv to INTERNET!!! DANGER
+// const PORT = 80;
+// app.listen(PORT, () => {
+//     console.log(`Server listening on port ${PORT}`);
+// });
+//^^ DANGER! Open to internet!
+
 //initialize mongoose shenanigans
 const mongoose = require("mongoose");
 require("dotenv").config();
