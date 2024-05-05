@@ -22,9 +22,8 @@
         <!-- container for the CREATE NEW THREAD form -->
         <div class="new-thread">
             <div class="flex-centered" id="new-thread-placeholder">
-                <h2>[<a href="#">Create a New Thread</a>]</h2>
+                <h2>[<a href="#" id="new-thread-link">Create a New Thread</a>]</h2>
             </div>
-
 
             <div class="flex-centered" id="new-thread-form">
                 <form action="/api/threads/createThread" enctype="multipart/form-data" method="post">
@@ -120,8 +119,6 @@
     <script src="/js/enableImageUploadSwitching.js"></script>
 
     <!-- vv Script to show or hide new thread form -->
-    <script>
-
-    </script>
+    <script src="/js/showNewThreadForm.js"></script>
 
 </body>

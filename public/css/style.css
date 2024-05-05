@@ -27,6 +27,11 @@ body {
     font-size: 75%;
 }
 
+/* the new thread form doesn't display until you click the link "create a new thread */
+#new-thread-form {
+    display: none;
+}
+
 /* vvv ensures that all labels are aligned and same width */
 .form-group label {
     display: inline-block;

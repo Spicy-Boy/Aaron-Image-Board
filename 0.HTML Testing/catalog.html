@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Image Board</title>
 
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     
     <div class="wrapper-main">
-
         <div class="options">
 
             <ul>
@@ -31,32 +30,33 @@
         
         <div class="new-thread">
 
-            <form action="/api/threads/createThread" method="post">
+            <div class="flex-centered" id="new-thread-placeholder">
+                <h2>[ <a href="#" id="new-thread-link">Create a New Thread</a> ]</h2>
+            </div>
 
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
-                </div>
 
-                <br>
-
-                <div class="form-group">
-                    <label for="title">Subject</label>
-                    <input type="text" id="title" name="title">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="content">Comment</label>
-                    <textarea id="content" name="content" rows="4" cols="50">
-                    </textarea>
-                </div>
+            <div class="flex-centered" id="new-thread-form">
+                <form action="/api/threads/createThread" method="post">
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="title">Subject</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="content">Comment</label>
+                        <textarea id="content" name="content" rows="4" cols="50">
+                        </textarea>
+                    </div>
                 
-                <br>
-
-                <input type="submit" value="Post Thread">
-            </form>
+                    <br>
+                    <input type="submit" value="Post Thread">
+                </form>
+            </div>
 
 
         </div>
@@ -110,6 +110,8 @@
         <br>
         <center>footer!!</center>
     </footer>
+
+    <script src="../public/js/showNewThreadForm.js"></script>
 
 </body>
 </html>
