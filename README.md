@@ -1,7 +1,7 @@
 # Aaron-Image-Board
  An image board made with MEEN (ejs)
 
-<img src="public/screenshot1.png">
+<img src="public/screenshot2.png">
 
 
 # Plan for admin feature:
