@@ -32,6 +32,7 @@ router.get("/thread/:threadNo", isLoggedIn, renderSingleThreadPage);
 
 router.get("/error", isLoggedIn, renderErrorPage);
 
-router.get("*", isLoggedIn, renderFileNotFoundPage);
+// COMMENTED out because it was preventing api calls--going to have to find a better way to handle random file not found problems
+// router.get("*", isLoggedIn, renderFileNotFoundPage);
 
 module.exports = router;

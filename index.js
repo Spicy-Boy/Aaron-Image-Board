@@ -4,6 +4,7 @@ const app = express();
 const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override");
+const cors = require('cors');
 
 //LOGIN and SESSION Middleware
 const session = require('express-session');
@@ -23,6 +24,8 @@ store.on("error", function(error) {
 //~~
 
 //APP MIDDLEWARE
+app.use(cors());
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -63,17 +66,17 @@ app.use("/api/users", userRouter);
 // app.use("/api/upload", uploadRouter);
 
 //Turn on the app
-const PORT = 8080;
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
-
-// OPEN vvv to INTERNET!!! DANGER
-// const PORT = 80;
+// const PORT = 8080;
 // app.listen(PORT, () => {
 //     console.log(`Server listening on port ${PORT}`);
 // });
-//^^ DANGER! Open to internet!
+
+// OPEN vvv to INTERNET!!! DANGER
+const PORT = 80;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
+// ^^ DANGER! Open to internet!
 
 //initialize mongoose shenanigans
 const mongoose = require("mongoose");
