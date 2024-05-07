@@ -47,7 +47,9 @@ async function createOneThread(req, res)
         }
         else if (req.file)
         {
-            newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
+            newPost.img = `/uploads//${req.file.filename}`;
+            // vvv still figuring out how to get op images into their respective post folder (that doesnt eeven exist yet!!)
+            // newPost.img = `/uploads/${req.params.threadNo}/${req.file.filename}`;
             newPost.imgSize = Math.floor(((req.file.size / 1024) * 100) /100);
             newPost.imgFileType = req.file.mimetype;
 
