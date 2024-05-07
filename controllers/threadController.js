@@ -168,7 +168,7 @@ async function createPostInThread (req, res)
         await postNo.save();
 
         // vvv return to the thread
-        res.redirect("/thread/"+req.params.threadNo);
+        res.redirect("/thread/"+req.params.threadNo+"/#bottom");
 
         //tester vv
         // res.send(req.file);
