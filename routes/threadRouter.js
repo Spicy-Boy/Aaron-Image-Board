@@ -14,7 +14,7 @@ const {
 
 router.get("/getThread", getAllThreads);
 
-router.get("/getOneThread", getOneThread);
+router.get("/getOneThread/:threadNo", getOneThread);
 
 router.post("/createThread", upload.single('file'), handleUploadErrors, createOneThread);
 

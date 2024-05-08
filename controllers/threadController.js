@@ -31,7 +31,7 @@ async function getAllThreads(req, res)
 async function getOneThread(req, res)
 {
     try {
-        let results = await Thread.findOne({threadNo: req.body.threadNo});
+        let results = await Thread.findOne({threadNo: req.params.threadNo});
 
         res.json({
             message: "SUCCESS!",
