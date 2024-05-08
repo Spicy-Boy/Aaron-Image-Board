@@ -8,10 +8,13 @@ const multer = require('multer');
 const {
     getAllThreads,
     createOneThread,
-    createPostInThread
+    createPostInThread,
+    getOneThread
 } = require("../controllers/threadController");
 
 router.get("/getThread", getAllThreads);
+
+router.get("/getOneThread", getOneThread);
 
 router.post("/createThread", upload.single('file'), handleUploadErrors, createOneThread);
 

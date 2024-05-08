@@ -11,7 +11,7 @@ const upload = require("../middlewares/multer");
 
 async function getAllThreads(req, res)
 {
-    try{
+    try {
         //gets all threads and send it as a JSON
         let results = await Thread.find({});
         
@@ -23,7 +23,24 @@ async function getAllThreads(req, res)
     } catch (error) {
         console.error("getAllThreads failed:",error);
 
-        return res.send("ERROR getting the threads! Please try again later..");
+        return res.send("ERROR getting all threads! Please try again later..");
+    }
+}
+
+//find a single thread in the database by its thread number (sent in request body)
+async function getOneThread(req, res)
+{
+    try {
+        let results = await Thread.findOne({threadNo: req.body.threadNo});
+
+        res.json({
+            message: "SUCCESS!",
+            payload: results
+        });
+    } catch (error) {
+        console.error("getOneThread failed:",error);
+
+        return res.send("ERROR finding specified thread! Please try again later..");
     }
 }
 
@@ -185,5 +202,6 @@ async function createPostInThread (req, res)
 module.exports = {
     getAllThreads,
     createOneThread,
-    createPostInThread
+    createPostInThread,
+    getOneThread
 };

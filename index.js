@@ -65,16 +65,17 @@ app.use("/api/users", userRouter);
 // const uploadRouter = require("./routes/uploadRouter");
 // app.use("/api/upload", uploadRouter);
 
-//Turn on the app
-// const PORT = 8080;
-// app.listen(PORT, () => {
-//     console.log(`Server listening on port ${PORT}`);
-// });
-
-// OPEN vvv to INTERNET!!! DANGER
+// 80 is OPEN vvv to INTERNET!!! DANGER
 const PORT = 80;
+//8080 is for local testing
+// const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
+    if (PORT == 80)
+    {
+        console.log('CAUTION: Using port 80!');
+        console.log('Open to the internet!');
+    }
 });
 // ^^ DANGER! Open to internet!
 
