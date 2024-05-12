@@ -57,6 +57,9 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
+const adminRouter = require("./routes/adminRouter");
+app.use("/admin", adminRouter);
+
 //WILDCARD! disabled
 // const wildecardRouter = require("./routes/wildcardRouter");
 // app.use("*", wildcardRouter);
