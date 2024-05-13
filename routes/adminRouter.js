@@ -5,5 +5,25 @@ const router = require("express").Router();
 // const multer = require('multer');
 
 const {
-    deleteOneThread
+    unlistOneThread,
+    deleteOneThread,
+    pinOneThread,
+    unlistOnePost,
+    deleteOnePost,
+    editOnePost,
 } = require("../controllers/adminController");
+
+router.post("/unlistThread/:threadNo", unlistOneThread);
+
+router.delete("/deleteThread/:threadNo", deleteOneThread);
+
+router.post("/pinThread/:threadNo", pinOneThread);
+
+router.post("/unlistPost/:threadNo/:postNo", unlistOnePost);
+
+router.delete("/deletePost/:threadNo/:postNo", deleteOnePost);
+
+router.post("/editPost/:threadNo/:postNo", editOnePost);
+
+module.exports = router;
+

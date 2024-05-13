@@ -57,6 +57,7 @@ app.use("/api/threads", threadRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/api/users", userRouter);
 
+// NOTE:!!! TODO!!!:::!!  Add an admin auth to this route!!! must have an admin session logged in!!! Omg
 const adminRouter = require("./routes/adminRouter");
 app.use("/admin", adminRouter);
 
