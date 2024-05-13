@@ -69,9 +69,13 @@ app.use("/admin", adminRouter);
 // app.use("/api/upload", uploadRouter);
 
 // 80 is OPEN vvv to INTERNET!!! DANGER
-const PORT = 80;
+
+// const PORT = 80;
+
 //8080 is for local testing
-// const PORT = 8080;
+
+const PORT = 8080;
+
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
     if (PORT == 80)
@@ -80,6 +84,7 @@ app.listen(PORT, () => {
         console.log('Open to the internet!');
     }
 });
+
 // ^^ DANGER! Open to internet!
 
 //initialize mongoose shenanigans
