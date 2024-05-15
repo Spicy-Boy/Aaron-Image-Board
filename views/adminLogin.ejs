@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body class="body-admin">
+
+    <div class="wrapper-main">
+        
+        <div class="flex-centered">
+            <form action="/admin/createAdminSession" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="" value="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="" value="">
+                </div>
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

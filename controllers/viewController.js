@@ -169,6 +169,36 @@ async function renderErrorPage(req, res)
     }
 }
 
+async function renderAdminCavernPage(req, res)
+{
+    try{
+        res.render("adminCavern", {activeUser: req.session.activeUser});
+    } catch (error) {
+        let errorObj = {
+            message: "admin cavern failed",
+            payload: error
+        }
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("admin cavern page failed to load");
+    }
+}
+
+async function renderAdminLoginPage(req, res)
+{
+    try{
+        res.render("adminLogin", {activeUser: req.session.activeUser});
+    } catch (error) {
+        let errorObj = {
+            message: "admin login failed",
+            payload: error
+        }
+        console.error(errorObj);
+        // res.json(errorObj);
+        res.send("admin login page failed to load");
+    }
+}
+
 module.exports = {
     renderCatalogPage,
     renderSingleThreadPage,
@@ -177,5 +207,7 @@ module.exports = {
     logoutUser,
     renderUserPortal,
     renderFileNotFoundPage,
-    renderErrorPage
+    renderErrorPage,
+    renderAdminCavernPage,
+    renderAdminLoginPage
 };

@@ -252,6 +252,12 @@ they link to a thread from catalog vvv */
     flex-basis: 35%;
 }
 
+/* ADMIN PORTAL STYLES! */
+.body-admin {
+    color: white;
+    background-color: black;
+}
+
 /* pure utility classes vvv */
 
 .preserve-whitespace {

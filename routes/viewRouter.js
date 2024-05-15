@@ -8,12 +8,15 @@ const {
     logoutUser,
     renderUserPortal,
     renderFileNotFoundPage,
-    renderErrorPage
+    renderErrorPage,
+    renderAdminCavernPage,
+    renderAdminLoginPage
 } = require("../controllers/viewController");
 
 const {
     requireAuth,
-    isLoggedIn
+    isLoggedIn, //isLoggedIn is actually attachActiveUserSession
+    isUserAdmin
 } = require("../middlewares/authMiddleware");
 
 router.get("/", isLoggedIn, renderCatalogPage);
@@ -25,7 +28,12 @@ router.get("/login", isLoggedIn, renderLoginPage);
 
 router.get("/logout", logoutUser);
 
-router.get("/user-portal", requireAuth, renderUserPortal)
+router.get("/user-portal", requireAuth, renderUserPortal);
+
+router.get("/admin-cavern-entrance", requireAuth, isLoggedIn, renderAdminLoginPage);
+//to access the admin page, seek the cavern!
+//uses the isUserAdmin auth middleware to check if user has a valid admin session to access this page >:)
+router.get("/admin-cavern", requireAuth, isLoggedIn, isUserAdmin, renderAdminCavernPage);
 
 router.get("/error", isLoggedIn, renderErrorPage);
 
