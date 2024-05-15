@@ -43,12 +43,16 @@ async function attachActiveUserSession(req, res, next) {
 //only works if an active user is attached to session, see attachActiveUserSession above
 async function isUserAdmin(req, res, next)
 {
+    console.log('Running isUserAdmin check');
 
     if (req.session.adminId && req.session.activeUser) 
     {
         //check if the adminId registered into the session matches the current admin key set in the environmental variable
         const isAdminIdValid = req.session.adminId === process.env.SECRET_ADMIN_KEY;
-        
+
+        console.log(req.session.adminId);
+        console.log(process.env.SECRET_ADMIN_KEY);
+
         //NOTE! session.adminId is set in createAdminSession inside adminController!
 
         if (isAdminIdValid)
@@ -59,11 +63,12 @@ async function isUserAdmin(req, res, next)
         else
         {
             req.session.loginMessage = "You lack the permission to do that...";
-            res.redirect("/login");
+            return res.redirect("/login");
         }
     }
 
-    return next();
+    req.session.loginMessage = "O_O";
+    return res.redirect("/login")
 }
 
 module.exports = {
