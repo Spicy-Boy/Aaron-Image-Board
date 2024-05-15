@@ -48,12 +48,14 @@ async function loginUser(req, res)
 
         if (isCorrectPassword) 
         {
+            // if you steal someones _id, you can impersonate them perhaps!
             req.session.userId = foundUser._id;
 
-            res.redirect('/');
+            return res.redirect('/');
         } else {
+            //TODO send parameters for incorrect password redirect to login page
             res.json({
-                message: "function excecuted properly",
+                message: "function excecuted properly.. but",
                 payload: "incorrect password! try again"
             });
         }
@@ -63,8 +65,10 @@ async function loginUser(req, res)
             message: "loginUser failed",
             payload: error
         }
-        console.log(errorObj);
-        res.json(errorObj);
+        console.error(errorObj);
+        // res.json(errorObj);
+        // TODO: make this a parameter and redirect to login page with error code
+        res.send("Login failed somehow!");
     }
 }
 

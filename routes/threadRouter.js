@@ -33,8 +33,6 @@ router.post("/createThread", upload.single('file'), handleUploadErrors, createOn
 
 router.post("/createPostInThread/:threadNo", upload.single('file'), handleUploadErrors, createPostInThread);
 
-router.put("");
-
 function handleUploadErrors(error, req, res, next) {
     if (error instanceof multer.MulterError) 
     {

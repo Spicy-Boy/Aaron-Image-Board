@@ -41,11 +41,15 @@ async function isLoggedIn(req, res, next) {
 
 async function isUserAdmin(req, res, next)
 {
-    if (req.session && req.session.adminId) 
+    if (req.session && req.session.userId) 
     {
-        req.session.activeUser = await User.findOne({_id: req.session.adminId});
+        //TODO STUB!!
+
+        // req.session.adminUser = await User.findOne({_id: req.session.adminId});
         // vv changes the password into an empty string just in case
         req.session.activeUser.password = "";
+
+
 
         return next();
     }

@@ -1,8 +1,10 @@
+// STUB! unused! for now ;)
+
 const mongoose = require("mongoose");
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -18,13 +20,9 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    },
-    isAdmin: {
-        type: Boolean,
-        default: false
     }
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Admin", adminSchema);
 
 module.exports = User;
