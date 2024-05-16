@@ -208,6 +208,7 @@ they link to a thread from catalog vvv */
 }
 .username {
     color: #2c845a;
+    font-weight: 700;
 }
 /* vv when a user references this post, add link to this span */
 .replies {
