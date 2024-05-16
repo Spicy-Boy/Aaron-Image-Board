@@ -9,4 +9,4 @@ const pinInput = document.getElementById('command-execution-pin');
 
 let adminBar = document.getElementById('admin-bar');
 
-// TODO connect 
+

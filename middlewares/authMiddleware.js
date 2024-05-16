@@ -71,8 +71,16 @@ async function isUserAdmin(req, res, next)
     return res.redirect("/login")
 }
 
+// purpose of this middleware is to log the IP 
+async function logIPAuth(req, res, next)
+{
+    console.log("Hi",req.ip);
+    return next();
+}
+
 module.exports = {
     requireAuth,
     isLoggedIn: attachActiveUserSession,
-    isUserAdmin
+    isUserAdmin,
+    logIPAuth
 }

@@ -11,7 +11,7 @@
             <!-- <img src="/images/kirby-eat.gif"> -->
 
             <h1>Insert a new banner here lol :p</h1>
-            <h2><span style="font-size: 85%">Thread No.<%=thread.threadNo%>:</span><br> <%=thread.title%></h2>
+            <h2><span style="font-size: 85%">Thread No. <%=thread.threadNo%>:</span><br> <%=thread.title%></h2>
 
         </div>
         
@@ -171,7 +171,7 @@
     <%- include("./partials/footer") %>
 
     <div id="quick-reply-div">
-        <div id="grab-button">Reply to Thread No.## <button id="button-close-reply">X</button></div>
+        <div id="grab-button">Reply to Thread No. <%=thread.threadNo%><button id="button-close-reply">X</button></div>
 
         <form class="quick-reply-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" enctype="multipart/form-data" method="post">
             <input type="text" name="username" placeholder="Anonymous" value="Anonymous">

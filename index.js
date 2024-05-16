@@ -47,9 +47,11 @@ app.use(session(
     }
 ));
 
+let {logIPAuth} = require("./middlewares/authMiddleware");
+
 /* ~ R O U T E S ~ */
 const viewRouter = require("./routes/viewRouter");
-app.use("/", viewRouter);
+app.use("/", logIPAuth, viewRouter);
 
 const threadRouter = require("./routes/threadRouter");
 app.use("/api/threads", threadRouter);
