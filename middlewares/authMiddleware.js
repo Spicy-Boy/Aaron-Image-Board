@@ -1,5 +1,7 @@
 const User = require("../models/userModel");
 
+const globalIPState = require('../index');
+
 // TLDR: checks if a session exists and session contains a user's unique ID... if so CONTINUE, else redirect to login page
 function requireAuth(req, res, next) {
     if (req.session && req.session.userId) {
@@ -71,16 +73,27 @@ async function isUserAdmin(req, res, next)
     return res.redirect("/login")
 }
 
+
+//NOTE: Deprecated
+// just use morgan dude... why bother creating this complex mess yourself?
 // purpose of this middleware is to log the IP 
-async function logIPAuth(req, res, next)
-{
-    console.log("Hi",req.ip);
-    return next();
-}
+// async function logIPConnection(req, res, next)
+// {
+//     const ip = req.headers['x-real-ip'] || req.connection.remoteAddress;
+
+//     const now = Date.now;
+
+//     if (globalIPState.lastLoggedIp != ip || (now - globalIPState.lastLoggedIpTime) > globalIPState.ipLogWaitTime )
+//     {
+//         globalIPState.lastLoggedIp = ip;
+//         globalIPState.lastLoggedIpTime = now;
+//     }
+
+//     return next();
+// }
 
 module.exports = {
     requireAuth,
     isLoggedIn: attachActiveUserSession,
-    isUserAdmin,
-    logIPAuth
+    isUserAdmin
 }

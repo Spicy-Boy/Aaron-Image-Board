@@ -30,7 +30,14 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static('public'));
-app.use(logger("dev"));
+
+logger.token('client-ip', (req) => {
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    return ip;
+});
+const logFormat = ':client-ip :method :url :status :response-time ms - :res[content-length]';
+app.use(logger(logFormat));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
@@ -47,11 +54,9 @@ app.use(session(
     }
 ));
 
-let {logIPAuth} = require("./middlewares/authMiddleware");
-
 /* ~ R O U T E S ~ */
 const viewRouter = require("./routes/viewRouter");
-app.use("/", logIPAuth, viewRouter);
+app.use("/", viewRouter);
 
 const threadRouter = require("./routes/threadRouter");
 app.use("/api/threads", threadRouter);
