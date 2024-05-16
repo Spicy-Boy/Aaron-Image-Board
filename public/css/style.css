@@ -31,6 +31,9 @@ body {
 #new-thread-form {
     display: none;
 }
+#new-reply-form {
+    display: none;
+}
 
 /* vvv ensures that all labels are aligned and same width */
 .form-group label {
@@ -242,6 +245,7 @@ they link to a thread from catalog vvv */
     display: none;
 }
 
+/* QUICK REPLY feature-- creates a popup when user selected rply */
 .button-reply {
     color: #0066cc;
 }
@@ -250,6 +254,17 @@ they link to a thread from catalog vvv */
 }
 .button-reply:hover {
     color: red;
+}
+
+#quick-reply-div {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #d6daf0;
+}
+.quick-reply-form {
+    display: flex;
+    flex-direction: column;
 }
 
 /* USER PAGE */
@@ -298,6 +313,10 @@ they link to a thread from catalog vvv */
 
 
 /* pure utility classes vvv */
+
+.big-top-buffer {
+    margin-top: 100px;
+}
 
 .preserve-whitespace {
     white-space: pre-line;
