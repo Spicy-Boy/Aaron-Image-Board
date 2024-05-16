@@ -95,6 +95,12 @@ async function editOnePost(req, res)
     
 }
 
+// ban the user's ip, delete img associated with post, replace post content with -- USER WAS BANNED FOR THIS POST --
+async function banOneUser(req, res)
+{
+    
+}
+
 module.exports = {
     unlistOneThread,
     deleteOneThread,
@@ -103,5 +109,6 @@ module.exports = {
     deleteOnePost,
     editOnePost,
     createAdminSession,
-    terminateAdminSession
+    terminateAdminSession,
+    banOneUser
 };

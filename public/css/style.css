@@ -241,6 +241,16 @@ they link to a thread from catalog vvv */
     display: none;
 }
 
+.button-reply {
+    color: #0066cc;
+}
+.button-reply:visited {
+    color: #0066cc;
+}
+.button-reply:hover {
+    color: red;
+}
+
 /* USER PAGE */
 .thread-information {
     font-size: 14px;
@@ -270,13 +280,13 @@ they link to a thread from catalog vvv */
     color: blue !important;
 }
 .unlist {
-    color: rgb(187, 159, 0) !important;
+    color: rgb(187, 121, 0) !important;
 }
 .delete {
     color: red !important;
 }
 .ban {
-    color: orange !important;
+    color: rgb(119, 0, 0) !important;
 }
 #command-execution-pin {
     height: 13px;
