@@ -17,8 +17,11 @@ async function attachActiveUserSession(req, res, next) {
         if (req.session && req.session.userId) 
         {
             req.session.activeUser = await User.findOne({_id: req.session.userId});
+
+            //yeah, I know session variables are stored server side...
             // vv changes the password into an empty string just in case
             req.session.activeUser.password = "";
+            req.session.activeUser.adminId = null;
 
             return next();
         }
@@ -49,9 +52,6 @@ async function isUserAdmin(req, res, next)
     {
         //check if the adminId registered into the session matches the current admin key set in the environmental variable
         const isAdminIdValid = req.session.adminId === process.env.SECRET_ADMIN_KEY;
-
-        console.log(req.session.adminId);
-        console.log(process.env.SECRET_ADMIN_KEY);
 
         //NOTE! session.adminId is set in createAdminSession inside adminController!
 

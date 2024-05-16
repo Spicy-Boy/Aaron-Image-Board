@@ -11,7 +11,8 @@ const {
     unlistOnePost,
     deleteOnePost,
     editOnePost,
-    createAdminSession
+    createAdminSession,
+    terminateAdminSession
 } = require("../controllers/adminController");
 
 router.post("/unlistThread/:threadNo", unlistOneThread);
@@ -28,6 +29,8 @@ router.post("/editPost/:threadNo/:postNo", editOnePost);
 
 // >_< /admin/createAdminSession vvv
 router.post("/createAdminSession", createAdminSession);
+
+router.post("/terminateAdminSession", terminateAdminSession);
 
 module.exports = router;
 

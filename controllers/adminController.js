@@ -5,6 +5,7 @@ const User = require("../models/userModel");
 const argon2 = require("argon2");
 
 //basically a login for admins :)
+// adds an adminId variable to the session allowing one to administrate
 async function createAdminSession(req, res)
 {
     try{
@@ -57,6 +58,13 @@ async function createAdminSession(req, res)
     }
 }
 
+function terminateAdminSession(req, res)
+{
+    req.session.adminId = null;
+
+    return res.redirect('/');
+}
+
 async function unlistOneThread(req, res)
 {
 
@@ -94,5 +102,6 @@ module.exports = {
     unlistOnePost,
     deleteOnePost,
     editOnePost,
-    createAdminSession
+    createAdminSession,
+    terminateAdminSession
 };

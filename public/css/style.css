@@ -163,9 +163,9 @@ they link to a thread from catalog vvv */
     border-bottom: 1px solid #b7c5d9;
 }
 /* vvv posts that ARE the original post! */
-.post-container-OP {
+/* .post-container-OP { */
     /* min-width: 100px; */
-}
+/* } */
 .post-OP {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -257,6 +257,34 @@ they link to a thread from catalog vvv */
     color: white;
     background-color: black;
 }
+
+/* ADMIN embedded functionality styles */
+
+.admin-command-list a:hover{
+    color: purple !important;
+}
+.admin-command-list a:visited{
+    color: inherit;
+}
+.edit {
+    color: blue !important;
+}
+.unlist {
+    color: rgb(187, 159, 0) !important;
+}
+.delete {
+    color: red !important;
+}
+.ban {
+    color: orange !important;
+}
+#command-execution-pin {
+    height: 13px;
+    font-size: 10px;
+    width: 30px;
+}
+
+
 
 /* pure utility classes vvv */
 

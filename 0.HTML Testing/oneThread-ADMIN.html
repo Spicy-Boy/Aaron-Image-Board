@@ -111,22 +111,26 @@
                     </div>
 
                     <!-- vv admin bar for administering justice -->
-                    <div class="post-user-information" id="admin-bar">
-                        <div class="options">
+                    <div class="post-user-information" id="admin-bar-2">
 
-                            <ul>
-                                <li>
-                                    [<a style="color: blue" href="/api/administration/edit-post">Edit</a>]
-                                </li>
+                            <div class="options">
+                                <ul class="admin-command-list">
+                                    <li>
+                                        [<a class="edit" href="/api/administration/edit-post">Edit</a>]
+                                    </li>
+                                    <li>
+                                        [<a class="unlist" href="/api/administration/edit-post">Unlist</a>]
+                                    </li>
+                                    <li>
+                                        [<a class="delete" href="/api/administration/delete-post">Delete</a>]
+                                    </li>
+                                    <li>
+                                        [<a class="ban" href="/api/administration/ban-user">BAN USER</a>]
+                                    </li>
 
-                                <li>
-                                    [<a style="color: red" href="/api/administration/delete-post">Delete</a>]
-                                </li>
-
-                                <li>
-                                    [<a style="color: orange" href="/api/administration/ban-user">BAN USER</a>]
-                                </li>
-                            </ul>
+                                    <input type="text" id="command-execution-pin" value="">
+                                </ul>
+                            </div>
                     </div>
 
                     <div class="post-user-information">
