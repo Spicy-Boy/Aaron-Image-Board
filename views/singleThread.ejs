@@ -89,7 +89,7 @@
                                 let time = datePosted.getHours()+":"+datePosted.getMinutes().toString().padStart(2, '0');
                             %>
                             <span class="date"> <%=calendarDate+" "+time/*post.createdAt*/%></span>
-                            <span class="postNo"> No.<%=post.postNo%> [ <a class="button-reply" href="#">Reply</a> ]</span>
+                            <span class="postNo"> No.<%=post.postNo%> [ <a class="button-reply" data-postNo="<%=post.postNo%>" href="#">Reply</a> ]</span>
                             <!-- old position vv replies at top -->
                             <!-- like right here, but not now -->
                         </div>
@@ -170,6 +170,17 @@
     <%- include("./partials/bottom-nav") %>
     <%- include("./partials/footer") %>
 
+    <div id="quick-reply-div">
+        <div id="grab-button">Reply to Thread No.## <button id="button-close-reply">X</button></div>
+
+        <form class="quick-reply-form" action="/api/threads/createPostInThread/<%=thread.threadNo%>" enctype="multipart/form-data" method="post">
+            <input type="text" name="username" placeholder="Anonymous" value="Anonymous">
+            <textarea id="quick-content" name="content" rows="4" cols="35"></textarea>
+            <input id="quick-file" name="file" type="file">
+            <input type="submit" value="Post Reply">
+        </form>
+    </div>
+
     <script src="/js/createReplyLinks.js"></script>
 
     <script src="/js/enableImageUploadSwitching.js"></script>
@@ -178,6 +189,8 @@
 
     <!-- vv Script to show or hide new thread form -->
     <script src="/js/showNewReplyForm.js"></script>
+
+    <script src="/js/manageDraggableReply.js"></script>
 
 </body>
 

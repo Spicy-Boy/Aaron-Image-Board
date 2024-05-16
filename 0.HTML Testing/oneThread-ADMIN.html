@@ -289,19 +289,56 @@
         </script>
     </footer>
 
-    <div id="quick-reply-div"></div>
-        <div id="grab-button">Reply to Thread No.##</div>
-        <form class="quick-reply-form">
+    <div id="quick-reply-div">
+        <div id="grab-button">Reply to Thread No.## <button id="button-close-reply">X</button></div>
+
+        <form class="quick-reply-form" action="/api/threads/createPostInThread/<%post.postNo%>" enctype="multipart/form-data" method="post">
             <input type="text" name="username" placeholder="Anonymous" value="Anonymous">
-            <textarea id="content" name="content" rows="4" cols="50"></textarea>
+            <textarea id="content" name="content" rows="4" cols="35"></textarea>
             <input id="file" name="file" type="file">
             <input type="submit" value="Post Reply">
         </form>
-
+    </div>
+    
     <script>
+        const draggableDiv = document.getElementById('quick-reply-div');
+        const grabButton = document.getElementById('grab-button');
 
+        let isDragging = false;
+
+        let startX, startY, initialX, initialY;
+
+        grabButton.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            startX = event.clientX;
+            startY = event.clientY;
+            initialX = draggableDiv.offsetLeft;
+            initialY = draggableDiv.offsetTop;
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
+
+        //TY gpt... it is 1:30 am and I am so so sleepy
+        function onMouseMove(event) {
+        if (isDragging) 
+        {
+            const deltaX = event.clientX - startX;
+            const deltaY = event.clientY - startY;
+            draggableDiv.style.left = `${initialX + deltaX}px`;
+            draggableDiv.style.top = `${initialY + deltaY}px`;
+        }
+        }
+
+        function onMouseUp() 
+        {
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
 
 
     </script>
+
 </body>
 </html>

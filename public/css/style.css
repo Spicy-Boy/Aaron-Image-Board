@@ -34,6 +34,9 @@ body {
 #new-reply-form {
     display: none;
 }
+#new-reply-link:visited {
+    color: #0066cc;
+}
 
 /* vvv ensures that all labels are aligned and same width */
 .form-group label {
@@ -257,14 +260,36 @@ they link to a thread from catalog vvv */
 }
 
 #quick-reply-div {
-    display: flex;
+    position: fixed;
+    top: 50px;
+    left: 5px;
+
+
+    /* display: flex; */
+    display: none;
     flex-direction: column;
+    padding: 2px;
 
     background-color: #d6daf0;
+
+    border: pink solid 1px;
+
+    max-width: 100%;
+}
+#grab-button {
+    padding: 2px;
+    background-color: #9988ee;
+    text-align: center;
+    border: black solid 1px;
+
+    cursor: move;
 }
 .quick-reply-form {
     display: flex;
     flex-direction: column;
+}
+#button-close-reply {
+    float: right;
 }
 
 /* USER PAGE */
