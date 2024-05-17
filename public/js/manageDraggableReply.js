@@ -26,15 +26,17 @@ for (let i = 0; i < replyButtons.length; i++)
 
         linkRectangle = replyButtons[i].getBoundingClientRect();
 
-        console.log(linkRectangle.top+" "+linkRectangle.left);
+        // console.log(linkRectangle.top+" "+linkRectangle.left);
 
         draggableDiv.style.top = linkRectangle.top+linkRectangle.height+"px";
+        //changes to flex from none to make the div visible
         draggableDiv.style.display = "flex";
 
         //places user's curser inside the text area
         textBox.focus();
 
         event.preventDefault();
+
     });
 }
 

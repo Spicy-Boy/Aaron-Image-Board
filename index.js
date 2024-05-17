@@ -5,12 +5,13 @@ const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override");
 const cors = require('cors');
+const fs = require('fs'); //file system writing
 
 //LOGIN and SESSION Middleware
 const session = require('express-session');
 require("dotenv").config();
 
-//TO MAKE RENDER WORK vv ~~
+//
 const MongoDBSessionStore = require("connect-mongodb-session")(session);
 // Initialize MongoDB session store
 const store = new MongoDBSessionStore({
@@ -31,9 +32,53 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static('public'));
 
-//turn off dev for final project
+/* LOGGING to console and file */
+let dateAtStartup = new Date;
+let month = dateAtStartup.getMonth() + 1;
+let day = dateAtStartup.getDate();
+let year = dateAtStartup.getFullYear();
+
+let logPath = `./logs/${year}-${month}-${day}`
+fs.mkdir(logPath, {recursive: true}, (err) =>{
+    if (err) {
+        return console.error("Error creating the folder at "+logPath,err);
+    }
+    console.log('New log folder created successfully @',logPath);
+});
+logPath = logPath + "/access.log"
+fs.open(logPath, 'wx', (err, fd) => {
+    if (err)
+    {
+        if (err.code === 'EEXIST')
+        {
+            console.log('Log file already exists, not overwriting.');
+        }
+        else {
+            console.error("Error creating the log file at "+logPath,err);
+        }
+        return;
+    }
+
+    //if file didn't exist, continues to write it (empty string)
+    fs.write(fd, '', (writeErr) => {
+        if (writeErr) {
+            console.error("Error writing to the log file at "+logPath,writeErr);
+        } else {
+            console.log('File created successfully!');
+        }
+
+        fs.close(fd, (closeErr) => {
+            if (closeErr) {
+                console.error("Error writing to the log file at "+logPath,closeErr);
+            }
+        });
+    });
+});
+
+app.use(logger("combined", {
+    stream: fs.createWriteStream(logPath, {flags: 'a'})
+}));
 app.use(logger("dev"));
-// app.use(logger("combined"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

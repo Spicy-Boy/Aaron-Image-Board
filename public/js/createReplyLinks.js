@@ -25,7 +25,7 @@ arrPostReplies.forEach( (post, i) => {
         
         if (post.innerHTML.includes("&gt;&gt;"+postNo))
         {
-            console.log(post);
+            // console.log(post);
             //add a hyperlinklink replacing any valid >>postNo key in a user's post
             // NOTE: &gt;&gt; is ">>"
             post.innerHTML = post.innerHTML.replaceAll("&gt;&gt;"+postNo, `<a href="#${postNo}" class="referencing-${postNo} reply-link">${temporaryLinkIdentifier}${postNo}</a>`);
