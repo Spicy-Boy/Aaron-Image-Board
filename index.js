@@ -7,21 +7,13 @@ const methodOverride = require("method-override");
 const cors = require('cors');
 const fs = require('fs'); //file system writing
 
-//LOGIN and SESSION Middleware
+//LOGIN and SESSION Middleware including Session Storage on Mongo database
 const session = require('express-session');
 require("dotenv").config();
+const MongoDBStore = require('connect-mongodb-session')(session);
 
-//
-const MongoDBSessionStore = require("connect-mongodb-session")(session);
-// Initialize MongoDB session store
-const store = new MongoDBSessionStore({
-    uri: process.env.MONGODB_URI,
-    collection: "sessions" // Collection name to store sessions
-});
-// Catch errors
-store.on("error", function(error) {
-    console.error(error);
-});
+// vvv session store?? How do I use it
+
 //~~
 
 //APP MIDDLEWARE
@@ -30,7 +22,15 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static('public'));
+
+/* Session Store with MongoDB*/
+const mongoSessionStore = new MongoDBStore({
+    uri: "mongodb+srv://aLearnsMongoDB:GodLAUGH13triangle@cluster0.zlafxu5.mongodb.net/Aaron-Image-Board",
+    collection: 'forum-sessions'
+});
+mongoSessionStore.on('error', function(error) {
+    console.error("MongoDB Store error!",error);
+});
 
 /* LOGGING to console and file */
 let dateAtStartup = new Date;
@@ -43,7 +43,7 @@ fs.mkdir(logPath, {recursive: true}, (err) =>{
     if (err) {
         return console.error("Error creating the folder at "+logPath,err);
     }
-    console.log('New log folder created successfully @',logPath);
+    // console.log('New log folder created successfully @',logPath);
 });
 logPath = logPath + "/access.log"
 fs.open(logPath, 'wx', (err, fd) => {
@@ -51,10 +51,10 @@ fs.open(logPath, 'wx', (err, fd) => {
     {
         if (err.code === 'EEXIST')
         {
-            console.log('Log file already exists, not overwriting.');
+            console.log("Log file already exists @"+logPath+", not overwriting.");
         }
         else {
-            console.error("Error creating the log file at "+logPath,err);
+            console.error("Error creating the log file @ "+logPath,err);
         }
         return;
     }
@@ -62,7 +62,7 @@ fs.open(logPath, 'wx', (err, fd) => {
     //if file didn't exist, continues to write it (empty string)
     fs.write(fd, '', (writeErr) => {
         if (writeErr) {
-            console.error("Error writing to the log file at "+logPath,writeErr);
+            console.error("Error writing to the log file @ "+logPath,writeErr);
         } else {
             console.log('File created successfully!');
         }
@@ -80,6 +80,7 @@ app.use(logger("combined", {
 }));
 app.use(logger("dev"));
 
+//middleware for reading requests
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
@@ -92,7 +93,8 @@ app.use(session(
         saveUninitialized: true,
         cookies: {
             maxAge: 24*60*60*1000 // 24 hours before logged out automagically
-        }
+        },
+        store: mongoSessionStore
     }
 ));
 
