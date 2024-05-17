@@ -24,9 +24,15 @@ for (let i = 0; i < replyButtons.length; i++)
         const textBox = document.getElementById("quick-content");
         textBox.value += ">>"+replyButtons[i].dataset.postno+"\n";
 
-        draggableDiv.style.top = 50+"px";
-        draggableDiv.style.left = 5+"px";
+        linkRectangle = replyButtons[i].getBoundingClientRect();
+
+        console.log(linkRectangle.top+" "+linkRectangle.left);
+
+        draggableDiv.style.top = linkRectangle.top+linkRectangle.height+"px";
         draggableDiv.style.display = "flex";
+
+        //places user's curser inside the text area
+        textBox.focus();
 
         event.preventDefault();
     });

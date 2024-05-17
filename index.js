@@ -31,12 +31,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static('public'));
 
-logger.token('client-ip', (req) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    return ip;
-});
-const logFormat = ':client-ip :method :url :status :response-time ms - :res[content-length]';
-app.use(logger(logFormat));
+//turn off dev for final project
+app.use(logger("dev"));
+// app.use(logger("combined"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
