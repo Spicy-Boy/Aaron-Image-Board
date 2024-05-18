@@ -10,11 +10,6 @@ const fs = require('fs'); //file system writing
 //LOGIN and SESSION Middleware including Session Storage on Mongo database
 const session = require('express-session');
 require("dotenv").config();
-const MongoDBStore = require('connect-mongodb-session')(session);
-
-// vvv session store?? How do I use it
-
-//~~
 
 //APP MIDDLEWARE
 app.use(cors());
@@ -24,8 +19,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 /* Session Store with MongoDB*/
+const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoSessionStore = new MongoDBStore({
-    uri: "mongodb+srv://aLearnsMongoDB:GodLAUGH13triangle@cluster0.zlafxu5.mongodb.net/Aaron-Image-Board",
+    uri: process.env.MONGODB_URI,
     collection: 'forum-sessions'
 });
 mongoSessionStore.on('error', function(error) {
@@ -78,6 +74,7 @@ fs.open(logPath, 'wx', (err, fd) => {
 app.use(logger("combined", {
     stream: fs.createWriteStream(logPath, {flags: 'a'})
 }));
+// morgan.token('ip', (req) => req.ip || req.connection.remoteAddress);
 app.use(logger("dev"));
 
 //middleware for reading requests
@@ -123,6 +120,7 @@ app.use("/admin", adminRouter);
 // 80 is OPEN vvv to INTERNET!!! DANGER
 
 // const PORT = 80;
+// const PORT = 6969;
 
 //8080 is for local testing
 
@@ -130,9 +128,9 @@ const PORT = 8080;
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
-    if (PORT == 80)
+    if (PORT == 80 || 6969)
     {
-        console.log('CAUTION: Using port 80!');
+        console.log('CAUTION: Using port '+PORT+'!');
         console.log('Open to the internet!');
     }
 });
