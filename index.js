@@ -40,6 +40,8 @@ fs.mkdir(logPath, {recursive: true}, (err) =>{
         return console.error("Error creating the folder at "+logPath,err);
     }
     // console.log('New log folder created successfully @',logPath);
+
+    console.log("github commit :))")
 });
 logPath = logPath + "/access.log"
 fs.open(logPath, 'wx', (err, fd) => {
@@ -128,7 +130,7 @@ const PORT = 8080;
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
-    if (PORT == 80 || 6969)
+    if (PORT == 80 || PORT == 6969)
     {
         console.log('CAUTION: Using port '+PORT+'!');
         console.log('Open to the internet!');
