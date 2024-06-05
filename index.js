@@ -40,8 +40,6 @@ fs.mkdir(logPath, {recursive: true}, (err) =>{
         return console.error("Error creating the folder at "+logPath,err);
     }
     // console.log('New log folder created successfully @',logPath);
-
-    console.log("github commit :))")
 });
 logPath = logPath + "/access.log"
 fs.open(logPath, 'wx', (err, fd) => {
