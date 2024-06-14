@@ -25,6 +25,13 @@ body {
 }
 .banner h2 {
     font-size: 75%;
+    margin: 0;
+    padding-top: 5px;
+}
+.banner h1 {
+    margin: 0;
+    padding-top: 2px;
+    padding-bottom: 5px;
 }
 
 /* the new thread form doesn't display until you click the link "create a new thread */
